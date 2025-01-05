@@ -44,6 +44,9 @@
   --surface-color: #ffffff;
 }
 
+/* default dark background */
+/* commented on 01/04
+
 .dark-background {
   --background-color: #2a2c39;
   --default-color: #ffffff;
@@ -51,6 +54,16 @@
   --surface-color: #404356;
   --contrast-color: #ffffff;
 }
+*/
+
+.dark-background {
+  --background-color: #1e81b0; /* Vibrant blue */
+  --default-color: #ffffff;    /* White for text */
+  --heading-color: #d1eaf5;    /* Light blue for headings */
+  --surface-color: #15658a;    /* Darker blue for surfaces */
+  --contrast-color: #f4f9fb;   /* Near white for highlights */
+}
+
 
 /* Smooth scroll */
 :root {
