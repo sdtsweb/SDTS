@@ -188,7 +188,10 @@ h6 {
 /* Global Header on Scroll
 ------------------------------*/
 .scrolled .header {
-  --background-color: rgba(42, 44, 57, 0.9);
+  /* modified this to retain the vibrant blue while scrolling 01/05*/
+/*  --background-color: rgba(42, 44, 57, 0.9);*/
+--background-color: #1e81b0;
+
 }
 
 /*--------------------------------------------------------------
