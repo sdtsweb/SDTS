@@ -142,6 +142,46 @@
 
   });
 
+  // This change is to load the photos dynamically 01/06 starts
+  /**
+ * Load dynamic portfolio images and initialize swiper
+ */
+/*function loadDynamicPortfolio() {
+  const portfolioWrapper = document.getElementById('portfolio-swiper-wrapper');
+  const folderPath = 'assets/img/masonry-portfolio/'; // Path to the images folder
+  const maxImages = 10; // Limit the number of images displayed
+
+  if (!portfolioWrapper) return;
+
+  fetch(folderPath)
+    .then(response => response.text())
+    .then(data => {
+      const parser = new DOMParser();
+      const htmlDoc = parser.parseFromString(data, 'text/html');
+      const imageLinks = Array.from(htmlDoc.querySelectorAll('a'))
+        .filter(link => link.href.match(/\.(jpg|jpeg|png|gif)$/i)) // Only include valid image formats
+        .map(link => link.href)
+        .sort((a, b) => b.localeCompare(a)) // Sort in descending order
+        .slice(0, maxImages); // Get the latest maxImages
+
+      imageLinks.forEach(imageSrc => {
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.innerHTML = `<img src="${imageSrc}" alt="Portfolio Image">`;
+        portfolioWrapper.appendChild(slide);
+      });
+
+      // Initialize Swiper after adding images
+      initSwiper();
+    })
+    .catch(err => console.error('Error fetching portfolio images:', err));
+}
+
+// Call the function on page load
+window.addEventListener('load', loadDynamicPortfolio)*/;
+
+  // This change is to load the photos dynamically 01/06 ends
+
   /**
    * Init swiper sliders
    */
