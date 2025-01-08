@@ -146,39 +146,56 @@
   /**
  * Load dynamic portfolio images and initialize swiper
  */
-/*function loadDynamicPortfolio() {
+/**
+ * Generate JSON list of image paths dynamically
+ * @param {string} folderPath - Path to the images folder
+ * @param {number} start - Starting index of images
+ * @param {number} end - Ending index of images
+ * @param {string} extension - Image file extension (e.g., 'jpg')
+ * @returns {string[]} Array of image paths
+ */
+function generateImageJSON(folderPath, start, end, extension = 'jpg') {
+  const images = [];
+  for (let i = start; i <= end; i++) {
+    images.push(`${folderPath}image-${i}.${extension}`);
+  }
+  return images;
+}
+
+/**
+ * Load dynamic portfolio images and initialize swiper
+ * @param {number} startIndex - Starting index of images to load
+ * @param {number} endIndex - Ending index of images to load
+ */
+function loadDynamicPortfolio(startIndex = 1, endIndex = 10) {
   const portfolioWrapper = document.getElementById('portfolio-swiper-wrapper');
   const folderPath = 'assets/img/masonry-portfolio/'; // Path to the images folder
-  const maxImages = 10; // Limit the number of images displayed
+  const imageJSON = generateImageJSON(folderPath, startIndex, endIndex); // Generate the JSON array
 
   if (!portfolioWrapper) return;
 
-  fetch(folderPath)
-    .then(response => response.text())
-    .then(data => {
-      const parser = new DOMParser();
-      const htmlDoc = parser.parseFromString(data, 'text/html');
-      const imageLinks = Array.from(htmlDoc.querySelectorAll('a'))
-        .filter(link => link.href.match(/\.(jpg|jpeg|png|gif)$/i)) // Only include valid image formats
-        .map(link => link.href)
-        .sort((a, b) => b.localeCompare(a)) // Sort in descending order
-        .slice(0, maxImages); // Get the latest maxImages
+  imageJSON.forEach(imageSrc => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.innerHTML = `<img src="${imageSrc}" alt="Portfolio Image">`;
+    portfolioWrapper.appendChild(slide);
+  });
 
-      imageLinks.forEach(imageSrc => {
-        const slide = document.createElement('div');
-        slide.className = 'swiper-slide';
-        slide.innerHTML = `<img src="${imageSrc}" alt="Portfolio Image">`;
-        portfolioWrapper.appendChild(slide);
-      });
-
-      // Initialize Swiper after adding images
-      initSwiper();
-    })
-    .catch(err => console.error('Error fetching portfolio images:', err));
+  // Reinitialize Swiper to update with new slides
+  initSwiper();
 }
 
-// Call the function on page load
-window.addEventListener('load', loadDynamicPortfolio)*/;
+// Initial load on page load
+window.addEventListener('load', () => {
+  loadDynamicPortfolio(1, 10); // Load the first 10 images
+});
+
+// Add "Load More" functionality
+document.getElementById('load-more').addEventListener('click', () => {
+  // Adjust the range to load the next set of images
+  const currentImages = document.querySelectorAll('#portfolio-swiper-wrapper .swiper-slide').length;
+  loadDynamicPortfolio(currentImages + 1, currentImages + 10); // Load 10 more images
+});
 
   // This change is to load the photos dynamically 01/06 ends
 

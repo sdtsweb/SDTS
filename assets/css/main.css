@@ -1170,6 +1170,58 @@ section,
   opacity: 1;
   bottom: 0;
 }
+/* added on 1/7 for portflio load more button*/
+/* Load More Button Styles */
+/*--------------------------------------------------------------
+# Portfolio Section
+--------------------------------------------------------------*/
+
+/* Load More Button Styles */
+/* Center Swiper Slides */
+.portfolio-details-slider .swiper-wrapper {
+  display: flex; /* Flexbox for alignment */
+  justify-content: center; /* Horizontally center slides */
+  align-items: center; /* Vertically center slides (if height is set) */
+  display: flex; /* Enable flexbox */
+}
+
+/* Center the Load More Button */
+.load-more-container {
+  display: flex; /* Flexbox for alignment */
+  justify-content: center; /* Horizontally center the button */
+  margin-top: 20px; /* Space between the button and pagination */
+  position: relative; /* Ensure it doesn't overlap other elements */
+  z-index: 1; /* Ensure it stays above other elements */
+}
+
+.load-more {
+  padding: 10px 20px; /* Button padding */
+  font-size: 16px;
+  font-weight: 600;
+  background-color: var(--accent-color); /* Button background color */
+  color: var(--contrast-color); /* Button text color */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-pagination {
+  margin-bottom: 40px; /* Add space below pagination to separate it from the button */
+}
+
+.load-more:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 575px) {
+  .load-more {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+}
 
 /*--------------------------------------------------------------
 # Testimonials Section
@@ -1670,11 +1722,23 @@ section,
 # Portfolio Details Section
 --------------------------------------------------------------*/
 .portfolio-details .portfolio-details-slider img {
-  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block; /* Ensures images behave as block elements */
+}
+
+.portfolio-details .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically center content */
+  height: 100%; /* Ensure it spans the wrapper height */
 }
 
 .portfolio-details .swiper-wrapper {
-  height: auto;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 300px !important;
 }
 
 .portfolio-details .swiper-button-prev,
