@@ -142,10 +142,10 @@
 
   });
 
-  // This change is to load the photos dynamically 01/06 starts
-  /**
- * Load dynamic portfolio images and initialize swiper
- */
+ // This change is to load the photos dynamically 01/06 starts
+
+ let swiper; // Global variable to hold Swiper instance
+
 /**
  * Generate JSON list of image paths dynamically
  * @param {string} folderPath - Path to the images folder
@@ -153,6 +153,10 @@
  * @param {number} end - Ending index of images
  * @param {string} extension - Image file extension (e.g., 'jpg')
  * @returns {string[]} Array of image paths
+ */
+
+/**
+ * Load dynamic portfolio images and initialize swiper
  */
 function generateImageJSON(folderPath, start, end, extension = 'jpg') {
   const images = [];
@@ -163,7 +167,7 @@ function generateImageJSON(folderPath, start, end, extension = 'jpg') {
 }
 
 /**
- * Load dynamic portfolio images and initialize swiper
+ * Load dynamic portfolio images and append to the Swiper container
  * @param {number} startIndex - Starting index of images to load
  * @param {number} endIndex - Ending index of images to load
  */
@@ -172,8 +176,11 @@ function loadDynamicPortfolio(startIndex = 1, endIndex = 10) {
   const folderPath = 'assets/img/masonry-portfolio/'; // Path to the images folder
   const imageJSON = generateImageJSON(folderPath, startIndex, endIndex); // Generate the JSON array
 
+  console.log(swiper);
+
   if (!portfolioWrapper) return;
 
+  // Append the new images as swiper-slide elements
   imageJSON.forEach(imageSrc => {
     const slide = document.createElement('div');
     slide.className = 'swiper-slide';
@@ -181,60 +188,70 @@ function loadDynamicPortfolio(startIndex = 1, endIndex = 10) {
     portfolioWrapper.appendChild(slide);
   });
 
-  // Reinitialize Swiper to update with new slides
-  initSwiper();
+  // Reinitialize Swiper or update it after adding new slides
+  if (swiper) {
+    swiper.update(); // Update Swiper instance with new slides
+  } else {
+    initSwiper(); // Initialize Swiper if not already initialized
+  }
 }
+
+// Initialize currentImages globally to track the number of images loaded
+let currentImages = 0; // Start with 0 or adjust according to your setup
 
 // Initial load on page load
 window.addEventListener('load', () => {
   loadDynamicPortfolio(1, 10); // Load the first 10 images
+  currentImages = 10; // Update currentImages after initial load
 });
 
 // Add "Load More" functionality
 document.getElementById('load-more').addEventListener('click', () => {
   // Adjust the range to load the next set of images
-  const currentImages = document.querySelectorAll('#portfolio-swiper-wrapper .swiper-slide').length;
   loadDynamicPortfolio(currentImages + 1, currentImages + 10); // Load 10 more images
+  currentImages += 10; // Update the count of loaded images
 });
 
-  // This change is to load the photos dynamically 01/06 ends
+// This change is to load the photos dynamically 01/06 ends
 
-  /**
-   * Init swiper sliders
-   */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
 
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
-    });
-  }
+/**
+ * Init swiper sliders
+ */
+function initSwiper() {
+  document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+    let config = JSON.parse(
+      swiperElement.querySelector(".swiper-config").innerHTML.trim()
+    );
 
-  window.addEventListener("load", initSwiper);
-
-  /**
-   * Correct scrolling position upon page load for URLs containing hash links.
-   */
-  window.addEventListener('load', function(e) {
-    if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
-            behavior: 'smooth'
-          });
-        }, 100);
-      }
+    if (swiperElement.classList.contains("swiper-tab")) {
+      initSwiperWithCustomPagination(swiperElement, config);
+    } else {
+      swiper = new Swiper(swiperElement, config); // Assign swiper instance to the global variable
     }
   });
+}
+
+window.addEventListener("load", initSwiper);
+
+
+/**
+ * Correct scrolling position upon page load for URLs containing hash links.
+ */
+window.addEventListener('load', function(e) {
+  if (window.location.hash) {
+    if (document.querySelector(window.location.hash)) {
+      setTimeout(() => {
+        let section = document.querySelector(window.location.hash);
+        let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
+        window.scrollTo({
+          top: section.offsetTop - parseInt(scrollMarginTop),
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }
+});
 
   /**
    * Navmenu Scrollspy

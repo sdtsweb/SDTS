@@ -1721,11 +1721,12 @@ section,
 /*--------------------------------------------------------------
 # Portfolio Details Section
 --------------------------------------------------------------*/
-.portfolio-details .portfolio-details-slider img {
-  margin: 0;
-  padding: 0;
-  display: block; /* Ensures images behave as block elements */
+.portfolio-details .swiper-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;  /* Ensure images fill their container */
 }
+
 
 .portfolio-details .swiper-slide {
   display: flex;
@@ -1738,8 +1739,9 @@ section,
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  height: 300px !important;
+  /* Remove height: 300px or adjust it based on screen size */
 }
+
 
 .portfolio-details .swiper-button-prev,
 .portfolio-details .swiper-button-next {
@@ -2042,9 +2044,9 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}
+/*.starter-section {
+  --/* Add your styles here */
+/*}*/
 
 /*--------------------------------------------------------------
 # Blog Posts Section
