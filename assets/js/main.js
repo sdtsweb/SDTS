@@ -160,11 +160,12 @@
  */
 function generateImageJSON(folderPath, start, end, extension = 'jpg') {
   const images = [];
-  for (let i = start; i <= end; i++) {
+  for (let i = end; i >= start; i--) {
     images.push(`${folderPath}image-${i}.${extension}`);
   }
   return images;
 }
+
 
 /**
  * Load dynamic portfolio images and append to the Swiper container
@@ -201,17 +202,17 @@ let currentImages = 0; // Start with 0 or adjust according to your setup
 
 // Initial load on page load
 window.addEventListener('load', () => {
-  loadDynamicPortfolio(1, 10); // Load the first 10 images
-  currentImages = 10; // Update currentImages after initial load
+  loadDynamicPortfolio(1, 20); // Load the first 10 images
+  //currentImages = 10; // Update currentImages after initial load
 });
-
+/* commented load more button 02/16
 // Add "Load More" functionality
 document.getElementById('load-more').addEventListener('click', () => {
   // Adjust the range to load the next set of images
   loadDynamicPortfolio(currentImages + 1, currentImages + 10); // Load 10 more images
   currentImages += 10; // Update the count of loaded images
 });
-
+*/
 // This change is to load the photos dynamically 01/06 ends
 
 
