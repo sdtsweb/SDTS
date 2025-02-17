@@ -174,7 +174,7 @@ function generateImageJSON(folderPath, start, end, extension = 'jpg') {
  */
 function loadDynamicPortfolio(startIndex = 1, endIndex = 10) {
   const portfolioWrapper = document.getElementById('portfolio-swiper-wrapper');
-  const folderPath = 'assets/img/masonry-portfolio/'; // Path to the images folder
+  const folderPath = 'assets/img/past-events/'; // Path to the images folder
   const imageJSON = generateImageJSON(folderPath, startIndex, endIndex); // Generate the JSON array
 
   console.log(swiper);
@@ -185,7 +185,7 @@ function loadDynamicPortfolio(startIndex = 1, endIndex = 10) {
   imageJSON.forEach(imageSrc => {
     const slide = document.createElement('div');
     slide.className = 'swiper-slide';
-    slide.innerHTML = `<img src="${imageSrc}" alt="Portfolio Image">`;
+    slide.innerHTML = `<a href="${imageSrc}" class="glightbox preview-link"><img src="${imageSrc}" alt="Portfolio Image"></a>`;
     portfolioWrapper.appendChild(slide);
   });
 
@@ -202,8 +202,8 @@ let currentImages = 0; // Start with 0 or adjust according to your setup
 
 // Initial load on page load
 window.addEventListener('load', () => {
-  loadDynamicPortfolio(1, 20); // Load the first 10 images
-  //currentImages = 10; // Update currentImages after initial load
+  loadDynamicPortfolio(1, 10); // Load the first 10 images
+  currentImages = 10; // Update currentImages after initial load
 });
 /* commented load more button 02/16
 // Add "Load More" functionality

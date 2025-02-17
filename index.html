@@ -472,53 +472,56 @@ Our library has justice stories for children and books for all age groups. We hu
     </section><!-- /Services Section -->
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+<section id="portfolio" class="portfolio section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Past Events</h2>
-        <p>What we've done</p>
-      </div><!-- End Section Title -->
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Past Events</h2>
+    <p>What we've done</p>
+  </div><!-- End Section Title -->
 
-      <!-- Swiper Container -->
-      <div class="portfolio-details-slider swiper init-swiper">
-        <script type="application/json" class="swiper-config">
-          {
-            "loop": true,
-            "speed": 600,
-            "autoplay": {
-              "delay": 5000
-            },
-            "slidesPerView": "auto",
-            "navigation": {
-              "nextEl": ".swiper-button-next",
-              "prevEl": ".swiper-button-prev"
-            },
-            "pagination": {
-              "el": ".swiper-pagination",
-              "type": "bullets",
-              "clickable": true
-            }
+  <div class="container">
+    <!-- Swiper Container for Dynamic Thumbnails -->
+    <div class="portfolio-slider swiper init-swiper" data-aos="fade-up" data-aos-delay="200">
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "centeredSlides": true,
+          "autoplay": {
+            "delay": 5000
+          },
+          "slidesPerView": "auto",
+          "resistance": true,
+          "resistanceRatio": 0,
+          "navigation": {
+            "nextEl": ".swiper-button-next",
+            "prevEl": ".swiper-button-prev"
+          },
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
           }
-        </script>
-        <div class="swiper-wrapper" id="portfolio-swiper-wrapper">
-          <!-- Images will be dynamically added here -->
-        </div>
-        
-        <!-- Swiper Controls -->
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-
-        <div style="display: none;">
-
-        <!-- Load More Button -->
-        <div class="load-more-container">
-          <button id="load-more" class="btn btn-primary load-more">Load More</button>
-        </div>
+        }
+      </script>
+      <div class="swiper-wrapper" id="portfolio-swiper-wrapper">
+        <!-- Images will be dynamically added here -->
       </div>
-      </div>
-    </section><!-- /Portfolio Section -->
+      
+      <!-- Swiper Controls -->
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+
+    <!-- Load More Button -->
+    <div class="load-more-container" data-aos="fade-up" data-aos-delay="300">
+      <button id="load-more" class="btn btn-primary load-more">Load More</button>
+    </div>
+  </div>
+</section><!-- /Portfolio Section -->
+
     
     
     <div style="display: none;">
@@ -862,7 +865,6 @@ Our library has justice stories for children and books for all age groups. We hu
             </div><!-- End Info Item -->
 
           </div>
-          <div style="display: none;">
 
           <div class="col-lg-8">
             <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
@@ -896,7 +898,6 @@ Our library has justice stories for children and books for all age groups. We hu
             </form>
           </div><!-- End Contact Form -->
           </div>
-        </div>
 
       </div>
 
