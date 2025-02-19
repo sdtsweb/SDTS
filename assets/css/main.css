@@ -170,7 +170,7 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 32px;
+  max-height: 80px;
   margin-right: 8px;
 }
 
@@ -1182,8 +1182,27 @@ section,
   display: flex; /* Flexbox for alignment */
   justify-content: center; /* Horizontally center slides */
   align-items: center; /* Vertically center slides (if height is set) */
-  display: flex; /* Enable flexbox */
+  /* added on 12/16-starts display: flex; /* Enable flexbox */
 }
+/* added on 12/16-starts*/
+/* Constrain the height of each slide */
+.portfolio-details-slider .swiper-slide {
+  height: 300px; /* Adjust this value as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Ensure images scale down and maintain aspect ratio */
+.portfolio-details-slider .swiper-slide img {
+  max-height: 100%;
+  width: auto;
+  object-fit: cover; /* This ensures the image fills the container without distortion */
+  display: block;
+  margin: 0 auto;
+}
+/* added on 12/16-ends*/
 
 /* Center the Load More Button */
 .load-more-container {
