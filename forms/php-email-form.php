@@ -3,7 +3,7 @@
  * php-email-form.php
  *
  * A simple class to handle sending contact form emails.
- * This implementation uses PHP’s mail() function.
+ * This implementation uses PHP's mail() function.
  * For more robust delivery, consider using an SMTP library.
  */
 
@@ -15,6 +15,7 @@ class PHP_Email_Form {
   public $subject;
   public $message = "";
   public $smtp = array(); // Optional SMTP configuration
+  public $headers = array();
 
   /**
    * Adds a message fragment to the email content.
@@ -52,12 +53,13 @@ class PHP_Email_Form {
       return "Validation failed: Please check your input.";
     }
     
-    $headers = "From: " . $this->from_name . " <" . $this->from_email . ">";
+    $headers = implode("\r\n", $this->headers);
+    $headers .= "\r\nFrom: " . $this->from_name . " <" . $this->from_email . ">";
     
     if (mail($this->to, $this->subject, $this->message, $headers)) {
       return "success";
     } else {
-      return "Mail sending failed.";
+      return "Mail sending failed: " . error_get_last()['message'];
     }
   }
 }
