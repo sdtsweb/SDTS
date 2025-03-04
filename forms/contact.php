@@ -1,66 +1,41 @@
 <?php
-ob_start();
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-header('Content-Type: text/plain');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type, X-Requested-With');
+  /**
+  * Requires the "PHP Email Form" library
+  * The "PHP Email Form" library is available only in the pro version of the template
+  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
+  * For more info and help: https://bootstrapmade.com/php-email-form/
+  */
 
-error_log("POST data received: " . print_r($_POST, true));
+  // Replace contact@example.com with your real receiving email address
+  $receiving_email_address = 'sdts.mails@gmail.com';
 
-try {
-    // Include the PHP_Email_Form class.
-    if (file_exists($php_email_form = __DIR__ . '/php-email-form.php')) {
-        include($php_email_form);
-    } else {
-        throw new Exception('Unable to load the PHP_Email_Form library!');
-    }
+  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
+    include( $php_email_form );
+  } else {
+    die( 'Unable to load the "PHP Email Form" Library!');
+  }
 
-    // Validate POST data
-    if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['message'])) {
-        throw new Exception('All fields are required');
-    }
+  $contact = new PHP_Email_Form;
+  $contact->ajax = true;
+  
+  $contact->to = $receiving_email_address;
+  $contact->from_name = $_POST['name'];
+  $contact->from_email = $_POST['email'];
+  $contact->subject = $_POST['subject'];
 
-    // Create an instance of the PHP_Email_Form class.
-    $contact = new PHP_Email_Form;
-    $contact->ajax = true;
-    $contact->to = "sdts.mails@gmail.com";
+  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
+  /*
+  $contact->smtp = array(
+    'host' => 'smtp.gmail.com',
+    'username' => 'sdts.mails@gmail.com',
+    'password' => 'pass',
+    'port' => '587'
+  );
+  */
 
-    // Add additional headers for better email delivery
-    $contact->headers = array(
-        'MIME-Version: 1.0',
-        'Content-type: text/html; charset=UTF-8',
-        'X-Mailer: PHP/' . phpversion()
-    );
+  $contact->add_message( $_POST['name'], 'From');
+  $contact->add_message( $_POST['email'], 'Email');
+  $contact->add_message( $_POST['message'], 'Message', 10);
 
-    // Collect form data.
-    $contact->from_name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-    $contact->from_email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $contact->subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
-
-    // Build the message
-    $contact->add_message("From: " . $contact->from_name, "text");
-    $contact->add_message("Email: " . $contact->from_email, "text");
-    $contact->add_message("Message: " . $_POST['message'], "text");
-
-    // Send the email.
-    $result = $contact->send();
-
-    // Clear any buffered output.
-    ob_clean();
-
-    // Return response
-    if ($result === "success") {
-        http_response_code(200);
-        echo "OK";
-    } else {
-        throw new Exception($result);
-    }
-
-} catch (Exception $e) {
-    ob_clean();
-    http_response_code(500);
-    echo "Error: " . $e->getMessage();
-}
+  echo $contact->send();
 ?>
