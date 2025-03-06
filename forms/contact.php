@@ -1,63 +1,55 @@
 <?php
-ob_start();
-ini_set('display_errors', 1);
+// Include PHPMailer classes manually
+require_once '../vendor/PHPMailer/src/Exception.php';
+require_once '../vendor/PHPMailer/src/PHPMailer.php';
+require_once '../vendor/PHPMailer/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Set up error logging
+ini_set('log_errors', 1);
+ini_set('error_log', __DIR__ . '/error.log');
 error_reporting(E_ALL);
+
 header('Content-Type: text/plain');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type, X-Requested-With');
 
-// Debug information
+// Debug logging
 error_log("POST data received: " . print_r($_POST, true));
-error_log("PHP loaded .ini file: " . php_ini_loaded_file());
-error_log("PHP Sendmail Path: " . ini_get('sendmail_path'));
-error_log("PHP SMTP settings: " . ini_get('SMTP') . ":" . ini_get('smtp_port'));
 
 try {
-    // First validate the email
-    if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        throw new Exception('Invalid email address provided');
-    }
+    $mail = new PHPMailer(true);
 
-    // Include the PHP_Email_Form class
-    if (file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php')) {
-        include($php_email_form);
-    } else {
-        throw new Exception('Unable to load the PHP_Email_Form library!');
-    }
+    //Server settings
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';  // Gmail SMTP server
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'your-email@gmail.com'; // Your Gmail
+    $mail->Password   = 'your-app-password';    // Your Gmail App Password
+    $mail->SMTPSecure = 'tls';
+    $mail->Port       = 587;
 
-    $contact = new PHP_Email_Form;
-    
-    // Set the required properties
-    $contact->to = 'sdts.mails@gmail.com';
-    $contact->from_email = $_POST['email'];
-    $contact->from_name = $_POST['name'] ?? 'Website Visitor';
-    $contact->subject = $_POST['subject'] ?? 'New Contact Form Message';
-    
-    // Build message content
-    $messageContent = "From: " . $_POST['name'] . "\n";
-    $messageContent .= "Email: " . $_POST['email'] . "\n\n";
-    $messageContent .= "Message:\n" . $_POST['message'];
-    
-    $contact->add_message($messageContent);
-    
-    // Send and handle response
-    $result = $contact->send();
-    
-    ob_clean();
-    
-    if ($result === "success") {
-        http_response_code(200);
-        echo "OK";
-    } else {
-        throw new Exception($result);
-    }
+    //Recipients
+    $mail->setFrom($_POST['email'], $_POST['name']);
+    $mail->addAddress('sdts.mails@gmail.com');
+    $mail->addReplyTo($_POST['email'], $_POST['name']);
+
+    //Content
+    $mail->isHTML(true);
+    $mail->Subject = $_POST['subject'];
+    $mail->Body    = "Name: {$_POST['name']}<br>Email: {$_POST['email']}<br><br>Message:<br>{$_POST['message']}";
+    $mail->AltBody = strip_tags($mail->Body);
+
+    $mail->send();
+    error_log("Email sent successfully");
+    echo "OK";
 
 } catch (Exception $e) {
-    ob_clean();
-    error_log("Contact form error: " . $e->getMessage());
-    error_log("Stack trace: " . $e->getTraceAsString());
+    error_log("Mailer Error: " . $mail->ErrorInfo);
     http_response_code(500);
-    echo "Error: " . $e->getMessage();
+    echo "Error: " . $mail->ErrorInfo;
 }
 ?>
