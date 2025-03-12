@@ -147,72 +147,102 @@
  let swiper; // Global variable to hold Swiper instance
 
 /**
- * Generate JSON list of image paths dynamically
- * @param {string} folderPath - Path to the images folder
- * @param {number} start - Starting index of images
- * @param {number} end - Ending index of images
- * @param {string} extension - Image file extension (e.g., 'jpg')
- * @returns {string[]} Array of image paths
+ * Check if an image exists by trying to load it
+ * @param {string} url - URL of the image to check
+ * @returns {Promise<boolean>} - Promise that resolves to true if image exists
  */
+function checkImageExists(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+}
 
 /**
- * Load dynamic portfolio images and initialize swiper
+ * Generate JSON list of image paths dynamically
  */
-function generateImageJSON(folderPath, start, end, extension = 'jpg') {
+async function generateImageJSON(folderPath, start, end, extension = 'jpg') {
   const images = [];
+  const validImages = [];
+
+  // Generate all possible image paths
   for (let i = end; i >= start; i--) {
     images.push(`${folderPath}image-${i}.${extension}`);
   }
-  return images;
-}
 
+  // Check each image in parallel
+  const imageChecks = await Promise.all(
+    images.map(async (imagePath) => {
+      const exists = await checkImageExists(imagePath);
+      if (exists) {
+        validImages.push(imagePath);
+      } else {
+        console.warn(`Image not found: ${imagePath}`);
+      }
+    })
+  );
+
+  return validImages;
+}
 
 /**
  * Load dynamic portfolio images and append to the Swiper container
- * @param {number} startIndex - Starting index of images to load
- * @param {number} endIndex - Ending index of images to load
  */
-function loadDynamicPortfolio(startIndex = 1, endIndex = 10) {
+async function loadDynamicPortfolio(startIndex = 1, endIndex = 10) {
   const portfolioWrapper = document.getElementById('portfolio-swiper-wrapper');
-  const folderPath = 'assets/img/past-events/'; // Path to the images folder
-  const imageJSON = generateImageJSON(folderPath, startIndex, endIndex); // Generate the JSON array
+  if (!portfolioWrapper) {
+    console.warn('Portfolio wrapper not found');
+    return;
+  }
 
-  console.log(swiper);
+  // Use absolute path from root
+  const folderPath = '/assets/img/past-events/';
+  
+  try {
+    // Wait for valid images to be identified
+    const validImages = await generateImageJSON(folderPath, startIndex, endIndex);
+    
+    if (validImages.length === 0) {
+      console.warn('No valid images found in the specified range');
+      return;
+    }
 
-  if (!portfolioWrapper) return;
+    // Clear existing slides if needed
+    // portfolioWrapper.innerHTML = ''; // Uncomment if you want to clear existing slides
 
-  // Append the new images as swiper-slide elements
-  imageJSON.forEach(imageSrc => {
-    const slide = document.createElement('div');
-    slide.className = 'swiper-slide';
-    slide.innerHTML = `<a href="${imageSrc}" class="glightbox preview-link"><img src="${imageSrc}" alt="Portfolio Image"></a>`;
-    portfolioWrapper.appendChild(slide);
-  });
+    // Add only valid images as slides
+    validImages.forEach(imageSrc => {
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide';
+      slide.innerHTML = `
+        <a href="${imageSrc}" class="glightbox preview-link">
+          <img src="${imageSrc}" alt="Portfolio Image" 
+               onerror="this.onerror=null; this.src='/assets/img/placeholder.jpg';">
+        </a>`;
+      portfolioWrapper.appendChild(slide);
+    });
 
-  // Reinitialize Swiper or update it after adding new slides
-  if (swiper) {
-    swiper.update(); // Update Swiper instance with new slides
-  } else {
-    initSwiper(); // Initialize Swiper if not already initialized
+    // Update or initialize Swiper
+    if (swiper) {
+      swiper.update();
+    } else {
+      initSwiper();
+    }
+
+  } catch (error) {
+    console.error('Error loading portfolio images:', error);
   }
 }
 
-// Initialize currentImages globally to track the number of images loaded
-let currentImages = 0; // Start with 0 or adjust according to your setup
-
-// Initial load on page load
+// Modified event listener to handle async function
 window.addEventListener('load', () => {
-  loadDynamicPortfolio(1, 10); // Load the first 10 images
-  currentImages = 10; // Update currentImages after initial load
+  loadDynamicPortfolio(1, 10)
+    .catch(error => console.error('Error in initial portfolio load:', error));
+  currentImages = 10;
 });
-/* commented load more button 02/16
-// Add "Load More" functionality
-document.getElementById('load-more').addEventListener('click', () => {
-  // Adjust the range to load the next set of images
-  loadDynamicPortfolio(currentImages + 1, currentImages + 10); // Load 10 more images
-  currentImages += 10; // Update the count of loaded images
-});
-*/
+
 // This change is to load the photos dynamically 01/06 ends
 
 
