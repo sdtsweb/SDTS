@@ -142,147 +142,42 @@
 
   });
 
- // This change is to load the photos dynamically 01/06 starts
+  /**
+   * Init swiper sliders
+   */
+  function initSwiper() {
+    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+      let config = JSON.parse(
+        swiperElement.querySelector(".swiper-config").innerHTML.trim()
+      );
 
- let swiper; // Global variable to hold Swiper instance
-
-/**
- * Check if an image exists by trying to load it
- * @param {string} url - URL of the image to check
- * @returns {Promise<boolean>} - Promise that resolves to true if image exists
- */
-function checkImageExists(url) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-}
-
-/**
- * Generate JSON list of image paths dynamically
- */
-async function generateImageJSON(folderPath, start, end, extension = 'jpg') {
-  const images = [];
-  const validImages = [];
-
-  // Generate all possible image paths
-  for (let i = end; i >= start; i--) {
-    images.push(`${folderPath}image-${i}.${extension}`);
-  }
-
-  // Check each image in parallel
-  const imageChecks = await Promise.all(
-    images.map(async (imagePath) => {
-      const exists = await checkImageExists(imagePath);
-      if (exists) {
-        validImages.push(imagePath);
+      if (swiperElement.classList.contains("swiper-tab")) {
+        initSwiperWithCustomPagination(swiperElement, config);
       } else {
-        console.warn(`Image not found: ${imagePath}`);
+        swiper = new Swiper(swiperElement, config); // Assign swiper instance to the global variable
       }
-    })
-  );
-
-  return validImages;
-}
-
-/**
- * Load dynamic portfolio images and append to the Swiper container
- */
-async function loadDynamicPortfolio(startIndex = 1, endIndex = 10) {
-  const portfolioWrapper = document.getElementById('portfolio-swiper-wrapper');
-  if (!portfolioWrapper) {
-    console.warn('Portfolio wrapper not found');
-    return;
-  }
-
-  // Use absolute path from root
-  const folderPath = '/assets/img/past-events/';
-  
-  try {
-    // Wait for valid images to be identified
-    const validImages = await generateImageJSON(folderPath, startIndex, endIndex);
-    
-    if (validImages.length === 0) {
-      console.warn('No valid images found in the specified range');
-      return;
-    }
-
-    // Clear existing slides if needed
-    // portfolioWrapper.innerHTML = ''; // Uncomment if you want to clear existing slides
-
-    // Add only valid images as slides
-    validImages.forEach(imageSrc => {
-      const slide = document.createElement('div');
-      slide.className = 'swiper-slide';
-      slide.innerHTML = `
-        <a href="${imageSrc}" class="glightbox preview-link">
-          <img src="${imageSrc}" alt="Portfolio Image" 
-               onerror="this.onerror=null; this.src='/assets/img/placeholder.jpg';">
-        </a>`;
-      portfolioWrapper.appendChild(slide);
     });
-
-    // Update or initialize Swiper
-    if (swiper) {
-      swiper.update();
-    } else {
-      initSwiper();
-    }
-
-  } catch (error) {
-    console.error('Error loading portfolio images:', error);
   }
-}
 
-// Modified event listener to handle async function
-window.addEventListener('load', () => {
-  loadDynamicPortfolio(1, 10)
-    .catch(error => console.error('Error in initial portfolio load:', error));
-  currentImages = 10;
-});
+  window.addEventListener("load", initSwiper);
 
-// This change is to load the photos dynamically 01/06 ends
-
-
-/**
- * Init swiper sliders
- */
-function initSwiper() {
-  document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-    let config = JSON.parse(
-      swiperElement.querySelector(".swiper-config").innerHTML.trim()
-    );
-
-    if (swiperElement.classList.contains("swiper-tab")) {
-      initSwiperWithCustomPagination(swiperElement, config);
-    } else {
-      swiper = new Swiper(swiperElement, config); // Assign swiper instance to the global variable
+  /**
+   * Correct scrolling position upon page load for URLs containing hash links.
+   */
+  window.addEventListener('load', function(e) {
+    if (window.location.hash) {
+      if (document.querySelector(window.location.hash)) {
+        setTimeout(() => {
+          let section = document.querySelector(window.location.hash);
+          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
+          window.scrollTo({
+            top: section.offsetTop - parseInt(scrollMarginTop),
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
     }
   });
-}
-
-window.addEventListener("load", initSwiper);
-
-
-/**
- * Correct scrolling position upon page load for URLs containing hash links.
- */
-window.addEventListener('load', function(e) {
-  if (window.location.hash) {
-    if (document.querySelector(window.location.hash)) {
-      setTimeout(() => {
-        let section = document.querySelector(window.location.hash);
-        let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-        window.scrollTo({
-          top: section.offsetTop - parseInt(scrollMarginTop),
-          behavior: 'smooth'
-        });
-      }, 100);
-    }
-  }
-});
 
   /**
    * Navmenu Scrollspy
