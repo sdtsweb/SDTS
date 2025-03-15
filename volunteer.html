@@ -47,6 +47,18 @@
       gtag('config', 'UA-76041108-1');
     </script>
   
+  <!-- Google Analytics 4 implementation -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTQR0PJZD2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FTQR0PJZD2', {
+      'cookie_flags': 'SameSite=None;Secure',
+      'cookie_domain': 'sdts.org'
+    });
+  </script>
 </head>
 
 <body class="starter-page-page">
