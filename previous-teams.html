@@ -30,13 +30,17 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
   
-  <!-- (Optional) Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+  <!-- Google Analytics 4 implementation -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTQR0PJZD2"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'UA-76041108-1');
+
+    gtag('config', 'G-FTQR0PJZD2', {
+      'cookie_flags': 'SameSite=None;Secure',
+      'cookie_domain': 'sdts.org'
+    });
   </script>
   
 </head>
