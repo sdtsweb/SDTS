@@ -175,15 +175,25 @@ window.rejectCookies = function() {
    * Init swiper sliders
    */
   function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
+    // Check if Swiper is loaded
+    if (typeof Swiper === 'undefined') {
+      console.warn('Swiper not loaded');
+      return;
+    }
 
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        swiper = new Swiper(swiperElement, config); // Assign swiper instance to the global variable
+    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+      try {
+        let config = JSON.parse(
+          swiperElement.querySelector(".swiper-config").innerHTML.trim()
+        );
+    
+        if (swiperElement.classList.contains("swiper-tab")) {
+          initSwiperWithCustomPagination(swiperElement, config);
+        } else {
+          swiper = new Swiper(swiperElement, config);
+        }
+      } catch (error) {
+        console.warn('Error initializing swiper:', error);
       }
     });
   }

@@ -1058,7 +1058,19 @@ Our library has justice stories for children and books for all age groups. We hu
   <!-- Non-critical scripts with defer -->
   <script defer src="assets/vendor/aos/aos.js"></script>
   <script defer src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script defer src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <!-- Load Swiper only if needed -->
+  <script>
+    // Check if page has swiper elements
+    if (document.querySelector('.swiper')) {
+      const swiperScript = document.createElement('script');
+      swiperScript.defer = true;
+      swiperScript.src = 'assets/vendor/swiper/swiper-bundle.min.js';
+      swiperScript.onerror = function() {
+        console.warn('Failed to load Swiper script');
+      };
+      document.body.appendChild(swiperScript);
+    }
+  </script>
   <script defer src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script defer src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   
