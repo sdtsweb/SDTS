@@ -19,21 +19,26 @@
   <link href="assets/img/sdts_favicon.png" rel="icon">  
   <link href="assets/img/sdts_apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
+  <!-- Preload critical assets -->
+  <link rel="preload" href="assets/css/main.css" as="style">
+  <link rel="preload" href="assets/vendor/bootstrap/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="assets/img/sdts-logo_box.png" as="image">
+
+  <!-- Fonts with display swap -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
+  <!-- Critical CSS first -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  
+  <!-- Non-critical CSS with media="print" onload hack -->
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" media="print" onload="this.media='all'">
 
   <!-- =======================================================
   * Template Name: Selecao
@@ -1039,79 +1044,22 @@ Our library has justice stories for children and books for all age groups. We hu
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
+  <!-- Non-critical scripts with defer -->
+  <script defer src="assets/vendor/aos/aos.js"></script>
+  <script defer src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script defer src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script defer src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script defer src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  
   <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js"></script>
 
-  <script>
-    function checkCookieConsent() {
-      return localStorage.getItem('cookieConsent');
-    }
+  <!-- Move inline scripts to external file -->
+  <script defer src="assets/js/cookies.js"></script>
 
-    function acceptCookies() {
-      localStorage.setItem('cookieConsent', 'accepted');
-      document.getElementById('cookie-consent').style.display = 'none';
-      // Initialize Google Analytics after consent
-      initializeGA();
-    }
-
-    function rejectCookies() {
-      localStorage.setItem('cookieConsent', 'rejected');
-      document.getElementById('cookie-consent').style.display = 'none';
-      // Disable Google Analytics
-      window['ga-disable-UA-76041108-1'] = true;
-    }
-
-    // Show banner if consent not given
-    if (!checkCookieConsent()) {
-      document.getElementById('cookie-consent').style.display = 'block';
-    }
-
-    function initializeGA() {
-      // Your Google Analytics code here
-      gtag('config', 'UA-76041108-1', {
-        'cookie_flags': 'SameSite=None;Secure'
-      });
-    }
-  </script>
-
-  <style>
-  .cookie-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #f1f1f1;
-    padding: 20px;
-    text-align: center;
-    z-index: 1000;
-    border-top: 1px solid #ddd;
-  }
-
-  .cookie-banner button {
-    margin: 0 10px;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .cookie-banner button:first-of-type {
-    background: #4CAF50;
-    color: white;
-  }
-
-  .cookie-banner button:last-of-type {
-    background: #f44336;
-    color: white;
-  }
-  </style>
+  <!-- Move inline styles to external CSS -->
+  <link href="assets/css/cookies.css" rel="stylesheet" media="print" onload="this.media='all'">
 
 </body>
 
