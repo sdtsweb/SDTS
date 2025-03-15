@@ -43,19 +43,30 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+  <!-- Google Analytics 4 implementation -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'UA-76041108-1');
+    gtag('config', 'G-FTQR0PJZD2', {
+      'cookie_flags': 'SameSite=None;Secure',
+      'cookie_domain': 'sdts.org'
+    });
   </script>
 
 </head>
 
 <body class="index-page">
+
+  <div id="cookie-consent" class="cookie-banner" style="display: none;">
+    <p>We use cookies to analyze our traffic and improve your experience. 
+       <a href="privacy-policy.html">Learn more</a>
+    </p>
+    <button onclick="acceptCookies()">Accept</button>
+    <button onclick="rejectCookies()">Reject</button>
+  </div>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -1037,6 +1048,70 @@ Our library has justice stories for children and books for all age groups. We hu
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    function checkCookieConsent() {
+      return localStorage.getItem('cookieConsent');
+    }
+
+    function acceptCookies() {
+      localStorage.setItem('cookieConsent', 'accepted');
+      document.getElementById('cookie-consent').style.display = 'none';
+      // Initialize Google Analytics after consent
+      initializeGA();
+    }
+
+    function rejectCookies() {
+      localStorage.setItem('cookieConsent', 'rejected');
+      document.getElementById('cookie-consent').style.display = 'none';
+      // Disable Google Analytics
+      window['ga-disable-UA-76041108-1'] = true;
+    }
+
+    // Show banner if consent not given
+    if (!checkCookieConsent()) {
+      document.getElementById('cookie-consent').style.display = 'block';
+    }
+
+    function initializeGA() {
+      // Your Google Analytics code here
+      gtag('config', 'UA-76041108-1', {
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    }
+  </script>
+
+  <style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+    border-top: 1px solid #ddd;
+  }
+
+  .cookie-banner button {
+    margin: 0 10px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .cookie-banner button:first-of-type {
+    background: #4CAF50;
+    color: white;
+  }
+
+  .cookie-banner button:last-of-type {
+    background: #f44336;
+    color: white;
+  }
+  </style>
 
 </body>
 
