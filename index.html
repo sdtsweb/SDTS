@@ -48,17 +48,27 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-  <!-- Google Analytics 4 implementation -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <!-- Google Analytics -->
   <script>
+    // Initialize dataLayer first
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-FTQR0PJZD2', {
-      'cookie_flags': 'SameSite=None;Secure',
-      'cookie_domain': 'sdts.org'
-    });
+    
+    // Only load GA script if consent is given
+    if (localStorage.getItem('cookieConsent') === 'accepted') {
+      const gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-FTQR0PJZD2';
+      document.head.appendChild(gaScript);
+      
+      gaScript.onload = function() {
+        gtag('js', new Date());
+        gtag('config', 'G-FTQR0PJZD2', {
+          'cookie_flags': 'SameSite=None;Secure',
+          'cookie_domain': 'sdts.org'
+        });
+      };
+    }
   </script>
 
 </head>
@@ -1054,12 +1064,6 @@ Our library has justice stories for children and books for all age groups. We hu
   
   <!-- Main JS File -->
   <script defer src="assets/js/main.js"></script>
-
-  <!-- Move inline scripts to external file -->
-  <script defer src="assets/js/cookies.js"></script>
-
-  <!-- Move inline styles to external CSS -->
-  <link href="assets/css/cookies.css" rel="stylesheet" media="print" onload="this.media='all'">
 
 </body>
 
