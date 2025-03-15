@@ -36,7 +36,6 @@
   <!-- Non-critical CSS with media="print" onload hack -->
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" media="print" onload="this.media='all'">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" media="print" onload="this.media='all'">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" media="print" onload="this.media='all'">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" media="print" onload="this.media='all'">
 
@@ -1066,7 +1065,6 @@ Our library has justice stories for children and books for all age groups. We hu
       swiperScript.defer = true;
       swiperScript.src = 'assets/vendor/swiper/swiper-bundle.min.js';
       swiperScript.onload = function() {
-        // Initialize Swiper after script loads
         if (typeof initSwiper === 'function') {
           initSwiper();
         }
@@ -1077,11 +1075,10 @@ Our library has justice stories for children and books for all age groups. We hu
       document.body.appendChild(swiperScript);
     }
   </script>
-  <script defer src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script defer src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   
   <!-- Main JS File -->
   <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
 </body>
 
