@@ -177,7 +177,8 @@ window.rejectCookies = function() {
   function initSwiper() {
     // Check if Swiper is loaded
     if (typeof Swiper === 'undefined') {
-      console.warn('Swiper not loaded');
+      // If Swiper isn't loaded yet, wait and try again
+      setTimeout(initSwiper, 100);
       return;
     }
 
@@ -190,15 +191,13 @@ window.rejectCookies = function() {
         if (swiperElement.classList.contains("swiper-tab")) {
           initSwiperWithCustomPagination(swiperElement, config);
         } else {
-          swiper = new Swiper(swiperElement, config);
+          new Swiper(swiperElement, config);
         }
       } catch (error) {
         console.warn('Error initializing swiper:', error);
       }
     });
   }
-
-  window.addEventListener("load", initSwiper);
 
   /**
    * Correct scrolling position upon page load for URLs containing hash links.

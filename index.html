@@ -1061,10 +1061,16 @@ Our library has justice stories for children and books for all age groups. We hu
   <!-- Load Swiper only if needed -->
   <script>
     // Check if page has swiper elements
-    if (document.querySelector('.swiper')) {
+    if (document.querySelector('.init-swiper')) {
       const swiperScript = document.createElement('script');
       swiperScript.defer = true;
       swiperScript.src = 'assets/vendor/swiper/swiper-bundle.min.js';
+      swiperScript.onload = function() {
+        // Initialize Swiper after script loads
+        if (typeof initSwiper === 'function') {
+          initSwiper();
+        }
+      };
       swiperScript.onerror = function() {
         console.warn('Failed to load Swiper script');
       };
