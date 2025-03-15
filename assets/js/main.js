@@ -6,6 +6,35 @@
 * License: https://bootstrapmade.com/license/
 */
 
+// Make cookie functions globally accessible
+window.checkCookieConsent = function() {
+  return localStorage.getItem('cookieConsent');
+};
+
+window.acceptCookies = function() {
+  localStorage.setItem('cookieConsent', 'accepted');
+  document.getElementById('cookie-consent').style.display = 'none';
+  // Load GA script after consent
+  const gaScript = document.createElement('script');
+  gaScript.async = true;
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-FTQR0PJZD2';
+  document.head.appendChild(gaScript);
+  
+  gaScript.onload = function() {
+    gtag('js', new Date());
+    gtag('config', 'G-FTQR0PJZD2', {
+      'cookie_flags': 'SameSite=None;Secure',
+      'cookie_domain': 'sdts.org'
+    });
+  };
+};
+
+window.rejectCookies = function() {
+  localStorage.setItem('cookieConsent', 'rejected');
+  document.getElementById('cookie-consent').style.display = 'none';
+  window['ga-disable-G-FTQR0PJZD2'] = true;
+};
+
 (function() {
   "use strict";
 
@@ -201,37 +230,8 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
-  /* Cookie Consent Functions */
-  function checkCookieConsent() {
-    return localStorage.getItem('cookieConsent');
-  }
-
-  function acceptCookies() {
-    localStorage.setItem('cookieConsent', 'accepted');
-    document.getElementById('cookie-consent').style.display = 'none';
-    // Load GA script after consent
-    const gaScript = document.createElement('script');
-    gaScript.async = true;
-    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-FTQR0PJZD2';
-    document.head.appendChild(gaScript);
-    
-    gaScript.onload = function() {
-      gtag('js', new Date());
-      gtag('config', 'G-FTQR0PJZD2', {
-        'cookie_flags': 'SameSite=None;Secure',
-        'cookie_domain': 'sdts.org'
-      });
-    };
-  }
-
-  function rejectCookies() {
-    localStorage.setItem('cookieConsent', 'rejected');
-    document.getElementById('cookie-consent').style.display = 'none';
-    window['ga-disable-G-FTQR0PJZD2'] = true;
-  }
-
   // Show banner if consent not given
-  if (!checkCookieConsent()) {
+  if (!window.checkCookieConsent()) {
     document.getElementById('cookie-consent').style.display = 'block';
   }
 
