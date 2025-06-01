@@ -1,0 +1,14 @@
+# Redirect bts.sdts.org to sdts.org/bts/
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^bts\.sdts\.org$ [NC]
+RewriteRule ^(.*)$ https://sdts.org/bts/$1 [L,R=301]
+
+# Redirect sdts.org/bts.html to sdts.org/bts/
+RewriteRule ^bts\.html$ /bts/ [R=301,L]
+
+# Ensure trailing slash for bts directory
+RewriteCond %{REQUEST_URI} ^/bts$
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+# Handle directory access
+DirectoryIndex index.html 

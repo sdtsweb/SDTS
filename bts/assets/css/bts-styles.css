@@ -1,0 +1,114 @@
+/* BTS-specific styles */
+
+/* Hero section customization */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/bts-hero-bg.jpg') center center;
+    background-size: cover;
+    padding: 140px 0 60px 0;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* About section customization */
+.about {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.about h2 {
+    color: #2c4964;
+    margin-bottom: 20px;
+}
+
+.about h3 {
+    font-size: 26px;
+    color: #2c4964;
+}
+
+.about ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.about ul li i {
+    font-size: 20px;
+    padding-right: 4px;
+    color: #1977cc;
+}
+
+/* Contact section customization */
+.contact {
+    padding: 60px 0;
+}
+
+.contact .info-box {
+    color: #444444;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+    padding: 30px 0 32px 0;
+    border-radius: 4px;
+}
+
+.contact .info-box i {
+    font-size: 32px;
+    color: #1977cc;
+    border-radius: 50%;
+    padding: 8px;
+    border: 2px dotted #b3d1fa;
+}
+
+.contact .info-box h3 {
+    font-size: 20px;
+    color: #777777;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.contact .info-box p {
+    padding: 0;
+    line-height: 24px;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .hero h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        text-align: center;
+    }
+    
+    .about h2 {
+        font-size: 28px;
+    }
+    
+    .about h3 {
+        font-size: 22px;
+    }
+} 

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+  <!-- Add cache control meta tags -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
+  <title>Bharathiyar Tamil School - San Diego Tamil Sangam</title>
+  <meta name="description" content="Bharathiyar Tamil School (BTS) is dedicated to teaching Tamil language and culture to children in the Greater San Diego area through structured programs and engaging activities.">
+  <meta name="keywords" content="Bharathiyar Tamil School, BTS, Tamil education San Diego, Tamil language classes, Tamil cultural education">
+
+  <script>
+    // Set base URL depending on environment
+    const isLocal = window.location.hostname.includes('local');
+    const baseUrl = isLocal ? '' : '';
+    const mainSiteUrl = isLocal ? 'http://local.sdts.org' : 'https://sdts.org';
+  </script>
+
+  <!-- Favicons -->
+  <link href="assets/img/bts-logo-favicon.png?v=1" rel="icon" type="image/png">
+  <link href="assets/img/bts-apple-touch-icon.png?v=1" rel="apple-touch-icon">
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="assets/css/main.css" as="style">
+  <link rel="preload" href="assets/vendor/bootstrap/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="assets/img/bts-logo.png" as="image">
+
+  <!-- Fonts with display swap -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Critical CSS first -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  
+  <!-- Non-critical CSS with media="print" onload hack -->
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+
+  <style>
+    .hero {
+      padding-top: 120px; /* Add extra padding to prevent menu overlap */
+    }
+    .tamil-text {
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    section {
+      padding: 80px 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="#hero" class="logo d-flex align-items-center" onclick="event.preventDefault(); document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });">
+        <img src="assets/img/bts-logo.png" alt="BTS Logo">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#school-year">School Year</a></li>
+          <li><a href="#enrollment">Enrollment</a></li>
+          <li><a href="#faculty">Faculty</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="javascript:;" onclick="window.location.href=mainSiteUrl">SDTS</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-12 text-center">
+            <h1 class="animate__animated animate__fadeInDown">Welcome to Bharathiyar Tamil School</h1>
+            <h2 class="animate__animated animate__fadeInUp tamil-text">பாரதியார் தமிழ்ப் பள்ளி உங்களை அன்புடன் வரவேற்கிறது</h2>
+            <p class="animate__animated animate__fadeInUp tamil-text mt-4">எண்ணென்ப ஏனை யெழுத்தென்ப இவ்விரண்டுங்<br>
+            கண்ணென்ப வாழும் உயிர்க்கு.</p>
+            <p class="animate__animated animate__fadeInUp tamil-text mt-4">
+              "பாரதியார் தமிழ் பள்ளி" சாண் டியாகோ தமிழ் மக்களின் ஆதரவாலும், ஆற்றலாலும் சீர்பெற்று சிறப்பாக நடந்து கொண்டிருக்கின்றது. 
+              ஊர் தாண்டி, நாடு கடந்து, மொழியை நம் அடுத்த தலைமுறைக்கு கொண்டு செல்ல இது ஒரு பெரிய முயற்சியாகும். 
+              ஆண்டுகள் கடந்து மென்மேலும் சிறக்க தங்களின் ஆதரவை எதிர்பார்க்கிறோம்!!!
+            </p>
+            <div class="text-center mt-4">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfzfHnodzjZEMXS0cpKBC4wfJXoSbgxsrERYcgjGahtwp-UTA/viewform?usp=sharing&ouid=108224289775465076430" target="_blank" class="btn btn-primary mt-3">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+        <defs>
+          <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+        </defs>
+        <g class="wave1">
+          <use xlink:href="#wave-path" x="50" y="3"></use>
+        </g>
+        <g class="wave2">
+          <use xlink:href="#wave-path" x="50" y="0"></use>
+        </g>
+        <g class="wave3">
+          <use xlink:href="#wave-path" x="50" y="9"></use>
+        </g>
+      </svg>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+        <p>About Bharathiyar Tamil School</p>
+      </div>
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3>Our Mission</h3>
+            <p>
+              At Bharathiyar Tamil School, our goal is to introduce children from the age of three years and up to Tamil language and culture. Classes are taught in a fun, engaging, stress-free environment, with an emphasis on conversation skills, reading, and writing.
+            </p>
+            <ul>
+              <li><i class="bi bi-check2-circle"></i> Completely volunteer-run program, dependent on diligent volunteering by parents & other interested volunteers.</li>
+              <li><i class="bi bi-check2-circle"></i> Classes are held on Fridays between 6:30 p.m. & 8:30 p.m. at Shoal Creek Elementary School in Carmel Mountain Ranch.</li>
+              <li><i class="bi bi-check2-circle"></i> BTS calendar year follows the Poway School District's regular school calendar.</li>
+            </ul>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <h3>Our Approach</h3>
+            <p>
+              The school follows the comprehensive, structured syllabus developed by the American Tamil Academy. We create opportunities for children to:
+            </p>
+            <ul>
+              <li><i class="bi bi-check2-circle"></i> Participate in cultural activities such as plays and performances</li>
+              <li><i class="bi bi-check2-circle"></i> Display their budding skills on stage</li>
+              <li><i class="bi bi-check2-circle"></i> Interact with community thought leaders</li>
+              <li><i class="bi bi-check2-circle"></i> Learn Tamil in an immersive environment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- School Year Section -->
+    <section id="school-year" class="school-year section">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+        <h2>School Year</h2>
+        <p>Academic Calendar and Programs</p>
+        </div>
+        <p>Our academic year includes structured classes, interactive sessions, and assessments to ensure students progress in their understanding and usage of Tamil. Key dates and schedules are updated regularly to keep our community informed.</p>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+        <img src="assets/img/SY24-25.png" alt="school year 24-25" class="img-fluid">
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- Enrollment Section -->
+    <section id="enrollment" class="enrollment section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Enrollment</h2>
+        <p>Join Bharathiyar Tamil School</p>
+      </div>
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6" data-aos="fade-up">
+            <h3>Enrollment Details</h3>
+            <p>
+              Please review our enrollment requirements and fees for the upcoming academic year:
+            </p>
+            <ul>
+              <li><i class="bi bi-check2-circle"></i> Academic Year: 2025-2026</li>
+              <li><i class="bi bi-check2-circle"></i> Student Age: 3-15 years (as of September 1, 2025)</li>
+              <li><i class="bi bi-check2-circle"></i> Registration Fees:
+                <ul>
+                  <li>SDTS Member: $100 per child</li>
+                  <li>Non-Member: $140 per child</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="enrollment-content mt-4">
+              <p>
+                Families new to San Diego and local families considering Tamil language classes are encouraged to come check us out on Friday night when school is in session, get a feel for how the classes are taught, and then make a commitment.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3>How to Enroll</h3>
+            <p>Complete the online enrollment form and submit the registration fee via PayPal for the 2025-2026 academic year.</p>
+            <div class="text-center mt-4">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfzfHnodzjZEMXS0cpKBC4wfJXoSbgxsrERYcgjGahtwp-UTA/viewform?usp=sharing&ouid=108224289775465076430" target="_blank" class="btn btn-primary mt-3">Enroll Now</a>
+            </div>
+            <div class="mt-4">
+              <p>
+                If you have any questions or queries, please email: <br>
+                <a href="mailto:bts.tamilschool@gmail.com"><i class="bi bi-envelope"></i> bts.tamilschool@gmail.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Volunteer Staff Section -->
+    <section id="faculty" class="faculty section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Faculty</h2>
+        <p>Our Dedicated Teachers</p>
+      </div>
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6" data-aos="fade-up">
+            <div class="content">
+              <h3>Our Teaching Team</h3>
+              <p>
+                Our faculty consists of dedicated volunteers who are passionate about teaching Tamil language and culture. Each class is led by experienced teachers who create an engaging and supportive learning environment.
+              </p>
+              <ul>
+                <li><i class="bi bi-check2-circle"></i> Multiple teachers per class for personalized attention</li>
+                <li><i class="bi bi-check2-circle"></i> Regular communication with parents about student progress</li>
+                <li><i class="bi bi-check2-circle"></i> Focus on interactive learning and cultural immersion</li>
+                <li><i class="bi bi-check2-circle"></i> Experienced in teaching various age groups and proficiency levels</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/img/bts-teachers.jpg" alt="BTS Teachers" class="img-fluid rounded shadow-lg">
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200">
+            <div class="teaching-approach">
+              <h3>Teaching Approach</h3>
+              <p>Our teachers employ various teaching methods to make learning engaging and effective:</p>
+              <ul>
+                <li><i class="bi bi-check2-circle"></i> Classroom Activities:
+                  <ul>
+                    <li>Weekly vocabulary and conversation practice</li>
+                    <li>Interactive storytelling and songs</li>
+                    <li>Cultural activities and performances</li>
+                    <li>Regular assessments and feedback</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in Touch</p>
+          </div>
+          <p> <strong>Email:</strong> <a href="mailto:bts.tamilschool@gmail.com">bts.tamilschool@gmail.com</a></p>
+  
+          <p>
+            Our classes are operated directly from Shoal Creek Elementary School, where we work hard to reserve our facility in advance and keep it up to date. If the school facility is unavailable, we promptly secure an alternative venue or conduct virtual classes to ensure that learning never stops.<br><br>
+            Join our <a href="https://chat.whatsapp.com/LuDql1mRm7LCRiLoMIORZu" target="_blank">Tamil School Community on WhatsApp</a> for the latest updates.
+          </p>
+          <p><strong>School Timing:</strong> 6:45 PM to 8:30 PM</p>
+  
+        <!-- Optional: Embed Google Maps -->
+  
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.3875568380386!2d-117.08457162469128!3d32.96717547424441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dbf9f66a0f6123%3A0x990f16db9636532b!2sShoal%20Creek%20Elementary%20School!5e0!3m2!1sen!2sus!4v1740008891964!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  
+  
+        </div>
+      </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <h3>Bharathiyar Tamil School</h3>
+      <p>A San Diego Tamil Sangam Initiative</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.youtube.com/@sdtslive1202"><i class="bi bi-youtube"></i></a>
+        <a href="https://www.facebook.com/sdtamil"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/sdtamilsangam"><i class="bi bi-instagram"></i></a>
+        <a href="https://chat.whatsapp.com/CeNQtWJOP9G7LpO8IQcunI"><i class="bi bi-whatsapp"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>SDTS</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+  </script>
+</body>
+</html> 
