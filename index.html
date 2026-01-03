@@ -5,10 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-  <!-- Add cache control meta tags -->
+  <!-- Cache control meta tags - Removed for better performance (browser caching enabled) -->
+  <!-- For development, you can uncomment these lines:
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
+  -->
   
   <title>San Diego Tamil Sangam Website</title>
   <meta name="description" content="San Diego Tamil Sangam (SDTS) is a non-profit organization dedicated to promoting Tamil culture, language, and heritage in the Greater San Diego area through cultural events, education, and community programs.">
@@ -24,10 +26,11 @@
   <link rel="preload" href="assets/vendor/bootstrap/css/bootstrap.min.css" as="style">
   <link rel="preload" href="assets/img/sdts-logo_box.png" as="image">
 
-  <!-- Fonts with display swap -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts with display swap - Optimized loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
   <!-- Critical CSS first -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,9 +38,13 @@
   
   <!-- Non-critical CSS with media="print" onload hack -->
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"></noscript>
   <link href="assets/vendor/aos/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="assets/vendor/aos/aos.css" rel="stylesheet"></noscript>
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"></noscript>
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"></noscript>
 
   <!-- =======================================================
   * Template Name: Selecao
@@ -88,7 +95,7 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <img src="assets/img/sdts-logo_box.png" alt="SDTS Logo">
+        <img src="assets/img/sdts-logo_box.png" alt="SDTS Logo" fetchpriority="high">
         <!-- <h1 class="sitename">SDTS</h1> -->
       </a>
 
@@ -301,7 +308,7 @@
                 </p>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/sdts-logo_box.jpeg" alt="" class="img-fluid">
+                <img src="assets/img/sdts-logo_box.jpeg" alt="" class="img-fluid" loading="lazy">
               </div>
             </div>
           </div><!-- End Tab Content Item -->
@@ -322,7 +329,7 @@ The school also creates opportunities for children to participate in cultural ac
                 <a href="bts.html" class="btn btn-primary mt-3">Learn More</a>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/bts-logo.jpg" alt="" class="img-fluid">
+                <img src="assets/img/bts-logo.jpg" alt="" class="img-fluid" loading="lazy">
               </div>
             </div>
           </div><!-- End Tab Content Item -->
@@ -339,7 +346,7 @@ Our library has justice stories for children and books for all age groups. We hu
 
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/library.png" alt="" class="img-fluid">
+                <img src="assets/img/library.png" alt="" class="img-fluid" loading="lazy">
               </div>
             </div>
           </div><!-- End Tab Content Item -->
@@ -353,7 +360,7 @@ Our library has justice stories for children and books for all age groups. We hu
                 </p>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/working-4.jpg" alt="" class="img-fluid">
+                <img src="assets/img/working-4.jpg" alt="" class="img-fluid" loading="lazy">
               </div>
             </div>
           </div><!-- End Tab Content Item -->
@@ -395,27 +402,27 @@ Our library has justice stories for children and books for all age groups. We hu
             <h3>Board of Directors</h3>
             <div class="row gy-3">
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/BoardChairman.png" alt="Chairman" class="img-fluid rounded">
+                <img src="assets/img/team/BoardChairman.png" alt="Chairman" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thiru.Pannerselvam</h5>
                 <h5 class="mt-2 text-center">Chairman</h5>
               </div>
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/BoardMember-5.png" alt="Director 2" class="img-fluid rounded">
+                <img src="assets/img/team/BoardMember-5.png" alt="Director 2" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thiru.Magesh Shanmugam</h5>
                 <h5 class="mt-2 text-center">Director</h5>
               </div>
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/BoardMember-2.png" alt="Director 3" class="img-fluid rounded">
+                <img src="assets/img/team/BoardMember-2.png" alt="Director 3" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thirumathi.Selvi Srinivasan</h5>
                 <h5 class="mt-2 text-center">Director</h5>
               </div>
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/BoardMember-3.png" alt="Director 4" class="img-fluid rounded">
+                <img src="assets/img/team/BoardMember-3.png" alt="Director 4" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thiru.Manoharan Rangasamy</h5>
                 <h5 class="mt-2 text-center">Director</h5>
               </div>
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/BoardMember-4.png" alt="Director 5" class="img-fluid rounded">
+                <img src="assets/img/team/BoardMember-4.png" alt="Director 5" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thiru.Shyam Sundar</h5>
                 <h5 class="mt-2 text-center">Director</h5>
               </div>
@@ -427,37 +434,37 @@ Our library has justice stories for children and books for all age groups. We hu
             <h3>Executive Committee</h3>
             <div class="row gy-3">
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/EC-President.png" alt="Executive 1" class="img-fluid rounded">
+                <img src="assets/img/team/EC-President.png" alt="Executive 1" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thiru.Jaishankar Kannayiram</h5>
                 <h5 class="mt-2 text-center">President</h5>
               </div>
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/EC-GeneralSecretary.png" alt="Executive 2" class="img-fluid rounded">
+                <img src="assets/img/team/EC-GeneralSecretary.png" alt="Executive 2" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thiru.Bosco Silvester</h5>
                 <h5 class="mt-2 text-center">General Secretary</h5>
               </div>
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/EC-Treasurer.png" alt="Executive 3" class="img-fluid rounded">
+                <img src="assets/img/team/EC-Treasurer.png" alt="Executive 3" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thiru.Aravind Ganapathi</h5>
                 <h5 class="mt-2 text-center">Treasurer</h5>
               </div>
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/EC-Communication.jpeg" alt="Executive 4" class="img-fluid rounded">
+                <img src="assets/img/team/EC-Communication.jpeg" alt="Executive 4" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thiru.Udhay Durai</h5>
                 <h5 class="mt-2 text-center">VP-Communications</h5>
               </div>
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/EC-PublicRelations.jpeg" alt="Executive 5" class="img-fluid rounded">
+                <img src="assets/img/team/EC-PublicRelations.jpeg" alt="Executive 5" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thiru.Anand Vijayan</h5>
                 <h5 class="mt-2 text-center">VP-Public Relations</h5>
               </div>
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/EC-Culturals.jpeg" alt="Executive 6" class="img-fluid rounded">
+                <img src="assets/img/team/EC-Culturals.jpeg" alt="Executive 6" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thirumathi.Agnes Mary Selvaraj</h5>
                 <h5 class="mt-2 text-center">VP-Cultural</h5>
               </div>
               <div class="col-6 col-md-4 col-lg-4">
-                <img src="assets/img/team/EC-EventCoordination.png" alt="Executive 7" class="img-fluid rounded">
+                <img src="assets/img/team/EC-EventCoordination.png" alt="Executive 7" class="img-fluid rounded" loading="lazy">
                 <h5 class="mt-2 text-center">Thirumathi.Manjualadevi Rajendran</h5>
                 <h5 class="mt-2 text-center">VP-Event Coordination</h5>
               </div>
@@ -851,8 +858,8 @@ Our library has justice stories for children and books for all age groups. We hu
   <!-- Preloader -->
   <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Vendor JS Files - All deferred for better performance -->
+  <script defer src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Non-critical scripts with defer -->
   <script defer src="assets/vendor/aos/aos.js"></script>
