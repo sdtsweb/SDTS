@@ -5,12 +5,10 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-  <!-- Cache control meta tags - Removed for better performance (browser caching enabled) -->
-  <!-- For development, you can uncomment these lines:
+  <!-- Add cache control meta tags -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  -->
   
   <title>Bharathiyar Tamil School - San Diego Tamil Sangam</title>
   <meta name="description" content="Bharathiyar Tamil School (BTS) is dedicated to teaching Tamil language and culture to children in the Greater San Diego area through structured programs and engaging activities.">
@@ -32,11 +30,10 @@
   <link rel="preload" href="assets/vendor/bootstrap/css/bootstrap.min.css" as="style">
   <link rel="preload" href="assets/img/bts-logo.png" as="image">
 
-  <!-- Fonts with display swap - Optimized loading -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  <!-- Fonts with display swap -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Critical CSS first -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -44,11 +41,9 @@
   
   <!-- Non-critical CSS with media="print" onload hack -->
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"></noscript>
   <link href="assets/vendor/aos/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="assets/vendor/aos/aos.css" rel="stylesheet"></noscript>
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"></noscript>
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" media="print" onload="this.media='all'">
 
   <link rel="canonical" href="https://www.sdts.org/bts/" />
 
@@ -64,23 +59,6 @@
       padding: 80px 0;
       overflow: hidden;
     }
-    .grade-title {
-      color: #0d6efd;
-      font-weight: 600;
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      border-bottom: 2px solid #0d6efd;
-      padding-bottom: 0.25rem;
-    }
-    .teacher-name {
-      color: #333;
-      font-size: 1rem;
-      margin-bottom: 0;
-      line-height: 1.6;
-    }
-    .faculty .col-md-6 {
-      margin-bottom: 1.5rem;
-    }
   </style>
 </head>
 
@@ -89,7 +67,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="#hero" class="logo d-flex align-items-center" onclick="event.preventDefault(); document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });">
-        <img src="assets/img/bts-logo.png" alt="BTS Logo" fetchpriority="high">
+        <img src="assets/img/bts-logo.png" alt="BTS Logo">
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -99,8 +77,6 @@
           <li><a href="#school-year">School Year</a></li>
           <li><a href="#enrollment">Enrollment</a></li>
           <li><a href="#faculty">Faculty</a></li>
-          <li><a href="#schedule">Schedule</a></li>
-          <li><a href="#competitions">Competitions</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="javascript:;" onclick="window.location.href=mainSiteUrl">SDTS</a></li>
         </ul>
@@ -163,62 +139,26 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3>About Tamil Language</h3>
-            <p class="tamil-text">
-              தமிழ் தொன்று தொட்டு இருக்கின்ற மொழிகளில் ஒன்று ஆகும். இதன் வரலாறு சுமார் 2000 BCல் இருந்தே உள்ளது. தமிழ் மொழி சங்க காலத்தில் மிகவும் செழுமை அடைந்தது.
-            </p>
+            <h3>Our Mission</h3>
             <p>
-              Tamil is one of the ancient languages in the world dating back to 2000 BC. Tamil language grew on the basis of three Tamil Sangam periods. Sangam period gave Tolkaapiyam ("Ancient Literature"), Ettuthogai ('The Eight Anthologies'), Pathupaatu ("Ten Songs"), Thirukural ("Sacred Verses"), Silapatikaram, Seevaga Sinthamani, Manimekalai and later Periya puranam, Kamba Ramayanam, Bharathiyaar and Bharathi Dasan songs gave rich literature in Tamil.
+              At Bharathiyar Tamil School, our goal is to introduce children from the age of three years and up to Tamil language and culture. Classes are taught in a fun, engaging, stress-free environment, with an emphasis on conversation skills, reading, and writing.
             </p>
-            <p>
-              Tamil is one of the most prominent ancient language still spoken, written and is being actively developed. Tamil is an official language in India, Singapore and Malaysia. Learning Tamil and practicing Tamil culture will enhance our life and spirit.
-            </p>
+            <ul>
+              <li><i class="bi bi-check2-circle"></i> Completely volunteer-run program, dependent on diligent volunteering by parents & other interested volunteers.</li>
+              <li><i class="bi bi-check2-circle"></i> Classes are held on Fridays between 6:30 p.m. & 8:30 p.m. at Shoal Creek Elementary School in Carmel Mountain Ranch.</li>
+              <li><i class="bi bi-check2-circle"></i> BTS calendar year follows the Poway School District's regular school calendar.</li>
+            </ul>
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3>About Bharathiyar Tamil School</h3>
-            <p class="tamil-text">
-              பாரதியார் தமிழ் பள்ளி அனைத்து குழந்தைகளையும் மற்றும் பெற்றோர்களையும் 2025-2026 பள்ளி ஆண்டிற்கு வரவேற்கிறது. நம் பள்ளி சாண் டியேகோ மக்களின் ஆதரவாலும் ஊக்குவிப்பாலும் பதிமூன்றாம் ஆண்டில் காலடி எடுத்து வைக்கிறது.
-            </p>
+            <h3>Our Approach</h3>
             <p>
-              Bharathiyar Tamil School welcomes all our children and parents to 2025-2026 school year. We are stepping in on our thirteenth year with all of your strong support and encouragement. BTS is run by a team of dedicated volunteers who are parents of students in the school, as well as other San Diego Tamilians interested in helping the younger generation learn and appreciate our classical Tamil language.
+              The school follows the comprehensive, structured syllabus developed by the American Tamil Academy. We create opportunities for children to:
             </p>
-            <h3>School Mission</h3>
-            <p class="tamil-text">
-              நம் பள்ளியின் நோக்கம், மூன்று வயதிற்கு மேல் உள்ள குழந்தைகளுக்கு தமிழ் மொழி, பண்பாடு ஆகியவற்றை அறிமுகம் செய்வதாகும்.
-            </p>
-            <p>
-              At Bharathiyar Tamil School, our goal is to introduce children from the age of three years and up, to Tamil language and culture. Classes are taught in a fun, engaging, stress-free environment, with emphasis on conversation skills, reading and writing. The school follows the comprehensive, structured syllabus developed by the American Tamil Academy.
-            </p>
-            <p>
-              The school also creates opportunities for children to participate in cultural activities such as plays, songs and dance performances, display their budding skills on the stage, and interact with speakers who are thought leaders in the community and learn from them.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- School Administration Section -->
-    <section id="administration" class="administration section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>School Administration</h2>
-        <p>How We Operate</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-12" data-aos="fade-up">
-            <p>
-              The school is a part of the San Diego Tamil Sangam, a 501(c)(3) non-profit organization registered in the State of California.
-            </p>
-            <p>
-              The school is run by an Advisory Committee comprising members of the SDTS Executive Committee as well as school staff, to ensure all decision making is democratic and fair.
-            </p>
-            <p>The advisory committee works closely with the teachers and other volunteers to:</p>
             <ul>
-              <li><i class="bi bi-check2-circle"></i> Schedule classes, tests, parent-teacher conferences, annual programs, other events, and practice sessions for cultural performances.</li>
-              <li><i class="bi bi-check2-circle"></i> Find alternate locations when the local school site is not available.</li>
-              <li><i class="bi bi-check2-circle"></i> Recruit new teachers when needed.</li>
-              <li><i class="bi bi-check2-circle"></i> Bring in community leaders to interact with the students.</li>
-              <li><i class="bi bi-check2-circle"></i> Handle other administrative aspects.</li>
+              <li><i class="bi bi-check2-circle"></i> Participate in cultural activities such as plays and performances</li>
+              <li><i class="bi bi-check2-circle"></i> Display their budding skills on stage</li>
+              <li><i class="bi bi-check2-circle"></i> Interact with community thought leaders</li>
+              <li><i class="bi bi-check2-circle"></i> Learn Tamil in an immersive environment</li>
             </ul>
           </div>
         </div>
@@ -229,7 +169,7 @@
     <section id="school-year" class="school-year section">
     <div class="container" data-aos="fade-up">
         <div class="section-title">
-        <h2>School Year 2025-2026</h2>
+        <h2>School Year</h2>
         <p>Academic Calendar and Programs</p>
         </div>
         <p>Our academic year includes structured classes, interactive sessions, and assessments to ensure students progress in their understanding and usage of Tamil. The BTS calendar year follows the Poway School District's regular school calendar. Key dates and schedules are updated regularly to keep our community informed.</p>
@@ -304,421 +244,37 @@
           <div class="col-lg-6" data-aos="fade-up">
             <div class="content">
               <h3>Our Teaching Team</h3>
-              <p class="tamil-text">
-                ஒவ்வொரு வகுப்பினருக்கும் இரண்டு முதல் மூன்று ஆசிரியர்களால் கற்பிக்கப்படுகிறது, இது ஒவ்வொரு மாணவருக்கும் தனிப்பட்ட கவனம் செலுத்த உதவுகிறது.
-              </p>
               <p>
-                Each grade is taught by a team of two to three teachers, which makes it possible to give personal attention to every student.
+                Our faculty consists of dedicated volunteers who are passionate about teaching Tamil language and culture. Each class is led by experienced teachers who create an engaging and supportive learning environment.
               </p>
-              <p>
-                Every week, teachers communicate with parents via e-mail/WhatsApp, updating them on what has been taught in school and what homework has been assigned. Classes focus on speaking in Tamil, vocabulary skills, forming letters, words and sentences, pop quizzes, songs and story time.
-              </p>
-              <p class="tamil-text">
-                பெற்றோரின் தன்னார்வத் தொண்டுகள் மூலம் இக்கல்வி திட்டம் செயல் படுவதால் அனைத்து பெற்றோர்களும் இதில் ஈடுபட்டு பணிகளை பகிர்ந்து மாணவர்களுக்கு வளமான எதிர்காலத்தை உறுதி செய்யவேண்டும்.
-              </p>
-              <p>
-                Parent participation is not only encouraged — it is essential. We request all families to actively participate in school activities and coordinate with teachers and fellow volunteers to rotate responsibilities throughout the year.
-              </p>
+              <ul>
+                <li><i class="bi bi-check2-circle"></i> Multiple teachers per class for personalized attention</li>
+                <li><i class="bi bi-check2-circle"></i> Regular communication with parents about student progress</li>
+                <li><i class="bi bi-check2-circle"></i> Focus on interactive learning and cultural immersion</li>
+                <li><i class="bi bi-check2-circle"></i> Experienced in teaching various age groups and proficiency levels</li>
+              </ul>
             </div>
           </div>
           <div class="col-lg-6 text-center" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/bts-teachers.jpg" alt="BTS Teachers" class="img-fluid rounded shadow-lg" loading="lazy">
+            <img src="assets/img/bts-teachers.jpg" alt="BTS Teachers" class="img-fluid rounded shadow-lg">
           </div>
         </div>
 
         <div class="row mt-5">
           <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200">
-            <h3>Our Volunteer Teachers</h3>
-            <div class="row gy-3 mt-3">
-              <div class="col-md-6">
-                <h5 class="grade-title">Mun Mazhalai</h5>
-                <p class="teacher-name">Mrs. Annalakshmi Arumugam</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Mazhalai</h5>
-                <p class="teacher-name">Mrs. Priya Vadivel</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Nilai 1</h5>
-                <p class="teacher-name">Mrs. Sumithira Muthukkumar<br>Mrs. Varsha Ramesh</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Nilai 2</h5>
-                <p class="teacher-name">Mr. Vinodraj Manoharan</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Nilai 3</h5>
-                <p class="teacher-name">Mr. Dhanasekaran Kulasekaran<br>Mrs. Deepa Balasubramanian</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Nilai 4</h5>
-                <p class="teacher-name">Mr. K. Suresh</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Nilai 5</h5>
-                <p class="teacher-name">Mr. Sundar Balagangadharan</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Nilai 6</h5>
-                <p class="teacher-name">Mrs. Deepa Maheshbabu<br>Mrs. Priya Ramesh</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Nilai 7</h5>
-                <p class="teacher-name">Mr. Ram Muthukumar<br>Mrs. Nalini Ramu</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Nilai 8</h5>
-                <p class="teacher-name">Mr. Jaishankar Kannayiram</p>
-              </div>
-              <div class="col-md-12 mt-4">
-                <h5 class="grade-title">Substitute Teachers</h5>
-                <p class="teacher-name">Mrs. Sangeetha Nithyandam<br>Mrs. Priya Ramesh<br>Mrs. Yogalakshmi Ashokan<br>Mr. Udhay Durai<br>Mrs. Manjula Rajendran</p>
-                <p class="text-muted small mt-2">Our substitute teachers are always willing to help when needed.</p>
-              </div>
-              <div class="col-md-12 mt-4">
-                <h5 class="grade-title">High School Volunteers</h5>
-                <p class="teacher-name">Nikitha Anand<br>Aditi Iyer</p>
-                <p class="text-muted small mt-2">Our dedicated high school volunteers who assist with classes and school activities.</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Librarian</h5>
-                <p class="teacher-name">Aadarsh Rajendran</p>
-              </div>
-              <div class="col-md-6">
-                <h5 class="grade-title">Kalai Vizha Coordinator</h5>
-                <p class="teacher-name">Mrs. Shabna Babu</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Class Schedule Section -->
-    <section id="schedule" class="schedule section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Class Schedule</h2>
-        <p>Arrival and Dismissal</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-12" data-aos="fade-up">
-            <p class="tamil-text">
-              வகுப்புகள் வெள்ளிக்கிழமைகளில் நடத்தப்படுகின்றன. சரியாக மாலை 6:45 மணிக்கு தமிழ்த்தாய் வாழ்த்துடன் தொடங்குகிறது, பின் முக்கிய அறிவிப்புகள் / செய்திகள் இருந்தால் பெற்றோருக்கு தெரியப்படுத்தப்படும். அதன்பின் வகுப்புகள் தொடங்குகின்றன.
-            </p>
-            <p>
-              Classes are held on Fridays. Assembly starts sharply at 6:45pm. The classes start after the assembly. We encourage parents to join the assembly. Like our regular academic school insisting the importance of being on time we also insist and emphasize not to be tardy.
-            </p>
-            <h4>Dismissal Times:</h4>
-            <ul>
-              <li><i class="bi bi-clock"></i> <strong>Mun Mazhalai & Mazhalai:</strong> 8:00 PM</li>
-              <li><i class="bi bi-clock"></i> <strong>All other classes:</strong> 8:30 PM</li>
-            </ul>
-            <p class="tamil-text mt-3">
-              உங்கள் குழந்தைகளை குறித்த நேரத்தில் அழைத்துச் செல்லவும்.
-            </p>
-            <p>
-              Make sure you pick up your child on time.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Attendance Section -->
-    <section id="attendance" class="attendance section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Attendance Policies</h2>
-        <p>வருகைப்பதிவு கொள்கைகள்</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-12" data-aos="fade-up">
-            <p class="tamil-text">
-              உங்கள் பிள்ளை வகுப்பிற்கு விடுப்பு என்பதை வகுப்பு ஆசிரியருக்கு கட்டாயம் தெரிவிக்கவும். ஒவ்வொரு வகுப்பிலும் அதிக வருகைப்பதிவு (90% மேல்) கொண்டுள்ள மாணவ மாணவியர்களுக்கு பள்ளி ஆண்டு விழாவின்போது விருது வழங்கப்படும்.
-            </p>
-            <p>
-              Please notify your class teacher if your child will be absent. The top attendance student at each class gets award on the BTS Annual Day. Tardy counts, we don't encourage tardiness.
-            </p>
-            <p>
-              <strong>Attendance award will be considered for children with 90% or above attendance.</strong>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testing Section -->
-    <section id="testing" class="testing section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testing</h2>
-        <p>தேர்வுகள்</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-12" data-aos="fade-up">
-            <p class="tamil-text">
-              நாம் வருடத்திற்கு மூன்று முக்காலத் தேர்வு முறையைக் கொண்டுள்ளோம். குழந்தைகள் எல்லாத் தேர்வையும் எடுக்க வேண்டும். தவிர்க்க முடியாத சூழ்நிலைகளில், அந்தந்த வகுப்பு ஆசிரியரின் அனுமதியுடன், அவர்கள் தனித்தேர்வு மேற்க்கொள்ளலாம்.
-            </p>
-            <p>
-              We have three trimesters per year. Children must take all the tests. They can have a make-up test during unavoidable situations with their respective class teacher's permission.
-            </p>
-            <ul>
-              <li><i class="bi bi-check2-circle"></i> <strong>Trimester 1:</strong> Lesson 1 to Lesson 6</li>
-              <li><i class="bi bi-check2-circle"></i> <strong>Trimester 2:</strong> Lesson 7 to 12</li>
-              <li><i class="bi bi-check2-circle"></i> <strong>Trimester 3:</strong> Lesson 13 to 18</li>
-            </ul>
-            <p>
-              Testing dates will be announced in the assembly as well as via e-mail and Whatsapp.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certificates Section -->
-    <section id="certificates" class="certificates section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>ATA Certificates</h2>
-        <p>அமெரிக்க தமிழ்க்கழகம் வழங்கும் சான்றிதழ்</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-6" data-aos="fade-up">
-            <h4>Participation Certificates</h4>
-            <p class="tamil-text">
-              அ.த.க தமிழ் வகுப்புகளில் பங்கேற்ற அனைத்து மாணவர்களுக்கும் பங்கேற்பு சான்றிதழ் வழங்கப்படும்.
-            </p>
-            <p>
-              All students who took part in the ATA Tamil Course will receive a participation certificate.
-            </p>
-          </div>
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h4>Course Completion Certificates</h4>
-            <p class="tamil-text">
-              குறைந்தபட்சம் 70% மதிப்பெண்கள் பெற்ற மாணவர்களுக்கு அ.த.க பாடநெறி முடித்ததை உறுதிப்படுத்தும் சான்றிதழ்கள் வழங்கப்படும்.
-            </p>
-            <p>
-              ATA will provide course completion certificates to students who achieve a minimum score of 70%.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Parent Teacher Conferences Section -->
-    <section id="conferences" class="conferences section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Parent Teacher Conferences</h2>
-        <p>பெற்றோர் ஆசிரியர் கலந்துரையாடல்கள்</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-12" data-aos="fade-up">
-            <p class="tamil-text">
-              மூன்றுமாத கல்விக்காலத் தேர்வு முடிந்தபின் உங்கள் குழந்தையின் செயல்திறன் பற்றி தனித்தனியே அந்தந்த வகுப்பு ஆசிரியருடன் கலந்துரையாடலாம். குழந்தையின் ஆர்வம் மற்றும் செயல்திறனை கொண்டே வகுப்பு நிலை உயர்வு தீர்மானிக்கப்படும்.
-            </p>
-            <p>
-              Parents will have one on one conference with respective teachers after each trimester. We encourage you to participate in the conference. Promotions will be decided on your child's active performance.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Kalai Vizha Section -->
-    <section id="kalaivizha" class="kalaivizha section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Kalai Vizha</h2>
-        <p>கலைவிழா</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-12" data-aos="fade-up">
-            <p class="tamil-text">
-              ஒவ்வொரு வருடமும் பள்ளி கலைவிழா டிசம்பர் மாதம் நடைபெறும். எல்லா குழந்தைகளும் பங்கேற்க ஊக்குவிக்கப்படுகிறார்கள்.
-            </p>
-            <p>
-              Every year, Our BTS Kalaivizha will be held in the month of December. All the children are encouraged to participate.
-            </p>
-            <h4>Programs include:</h4>
-            <ul>
-              <li><i class="bi bi-mic"></i> Skit (நாடகம்)</li>
-              <li><i class="bi bi-music-note"></i> Song (பாடல்)</li>
-              <li><i class="bi bi-chat-text"></i> Speech (பேச்சு)</li>
-              <li><i class="bi bi-person-badge"></i> Dance (நடனம்)</li>
-            </ul>
-            <p class="tamil-text mt-3">
-              அனைத்து நிகழ்ச்சிகளும் தமிழ் மொழி மற்றும் பண்பாட்டை சித்தரிக்கும் என எதிர்பார்க்கப்படுகிறது. நிகழ்ச்சிகளை தீர்மானிக்கையில் உங்கள் ஆசிரியர்களுடன் கலந்து ஆலோசிக்கவும்.
-            </p>
-            <p>
-              All the programs are expected to be portraying Tamil language and culture. Please consult with your teachers when deciding a piece.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Annual Day Section -->
-    <section id="annualday" class="annualday section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Annual Day</h2>
-        <p>ஆண்டு விழா</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-12" data-aos="fade-up">
-            <p class="tamil-text">
-              நம் பள்ளி ஆண்டு விழா மே மாதத்தில் நடைபெறும். குழந்தைகள் தங்கள் பொன்னான நேரத்தைப் பயன்படுத்தி கற்ற தமிழ்மொழி ஆற்றலை வெளிப்படுத்தும் விழாவாகும். குழந்தைகளின் அதிகபட்ச பங்களிப்பை நாங்கள் ஊக்குவிக்கிறோம்.
-            </p>
-            <p>
-              Our BTS Annual Day will be held in the month of May. It is a grand demonstration of the children who spent all the quality time learning Tamil. We encourage maximum participation.
-            </p>
-            <p>
-              Cultural participants will get certificates and top attendance winners will be awarded.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Competitions Section -->
-    <section id="competitions" class="competitions section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Competitions</h2>
-        <p>போட்டிகள்</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-6" data-aos="fade-up">
-            <h3>National Tamil Spelling Bee</h3>
-            <p class="tamil-text">
-              தமிழ்த் தேனீ என்பது அமெரிக்க அளவில் நடைபெறும் தமிழ் மொழிப் போட்டி ஆகும். இது மாணவர்களின் தமிழ் பயணத்தை ஊக்குவித்து, அடுத்த தலைமுறைக்குத் தமிழை எடுத்துச் செல்லும் முயற்சியை பாராட்டுகிறது.
-            </p>
-            <p>
-              National Tamil Spelling Bee is a US-wide contest that promotes Tamil among children, honors their effort, and helps pass the language to the next generation.
-            </p>
-            <p>
-              Students from registered Tamil schools can compete at the State, Zonal, and National levels. Levels are based on age and skill. FeTNA hosts the contest, with final rounds held during its annual conference. Our school participates every year.
-            </p>
-            <h5 class="grade-title mt-3">Coordinator</h5>
-            <p class="teacher-name">Mrs. Poomathi Chandra</p>
-          </div>
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3>BTS Thirukkural Competition</h3>
-            <p class="tamil-text">
-              இது குழந்தைகள் திருக்குறளில் உள்ள மதிப்புமிக்க கருத்துக்களை தெரிந்து கொள்ளவும் அவர்களின் நினைவாற்றல், சிந்தனைத்திறன், நல்லெண்ணங்கள், தன்னம்பிக்கை மற்றும் படைப்பாற்றலை மேம்படுத்தும் வடிவங்களில் திருக்குறளை கற்றுக்கொள்ள உதவுகிறது.
-            </p>
-            <p>
-              BTS organizes this annual competition to help children connect with the timeless values of Thirukkural through creative formats that enhance memory, thinking skills, moral values, confidence, and creativity.
-            </p>
-            <ul>
-              <li><i class="bi bi-music-note"></i> <strong>Thirukkural Isai Potti (Music Form):</strong> Sing a Kural chosen from a set of 100.</li>
-              <li><i class="bi bi-palette"></i> <strong>Thirukkural Oviyam Potti (Art Form):</strong> Draw a visual interpretation of a Kural from the same list.</li>
-              <li><i class="bi bi-book"></i> <strong>Thirukkural Oduthal Potti (Recitation Form):</strong> Recite a Kural from the given set.</li>
-            </ul>
-            <h5 class="grade-title mt-3">Coordinator</h5>
-            <p class="teacher-name">Mrs. Priya Vadivel</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Safety Rules Section -->
-    <section id="safety" class="safety section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Safety Rules</h2>
-        <p>பாதுகாப்பு விதிமுறைகள்</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-12" data-aos="fade-up">
-            <p class="tamil-text">
-              பெற்றோர்கள் தங்கள் குழந்தைகளை அந்தந்த வகுப்புகளில் கொண்டு சென்று விடுமாறு எதிர்பார்க்கப்படுகிறது. வாகனத்தில் இருந்தே குழந்தைகளை இறக்கிவிட்டுச் செல்லக்கூடாது.
-            </p>
-            <p>
-              Parents are expected to walk their child into their respective classes. Do not drop off the children in the parking lot.
-            </p>
-            <ul>
-              <li><i class="bi bi-x-circle text-danger"></i> No playing or running around in the parking lot.</li>
-              <li><i class="bi bi-x-circle text-danger"></i> No jumping over the stairs from the stage.</li>
-              <li><i class="bi bi-x-circle text-danger"></i> No playing with the stage articles, like screen and Piano.</li>
-              <li><i class="bi bi-x-circle text-danger"></i> No playing on basketball hoops.</li>
-            </ul>
-            <p>
-              Since BTS operates in a public school facility it is all of our responsibility to make sure that the school property is not damaged in any form or shape.
-            </p>
-            <p>
-              In case of any emergency situation parents should be reachable during BTS school hours. Also make sure you have your children's respective teacher's contact.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Lost and Found Section -->
-    <section id="lostfound" class="lostfound section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Lost and Found</h2>
-        <p>இழந்தது மற்றும் கண்டது</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-12" data-aos="fade-up">
-            <p class="tamil-text">
-              உங்கள் பிள்ளைகளின் சொந்த உடைமைகளுக்கு BTS பொறுப்பு அல்ல. எந்தவொரு பொருளையும் கண்டுபிடித்து, நிர்வாக தன்னார்வலர்களிடம் ஒப்படைத்தால், பின்வரும் பள்ளிக்கூட்டத்தில் அதை அறிவிப்போம்.
-            </p>
-            <p>
-              BTS is not responsible for your children's personal belongings. If any item found and handed over to the admin volunteer, we will announce it in the following assembly.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Advisory Committee Section -->
-    <section id="advisory" class="advisory section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>BTS Advisory Committee</h2>
-        <p>ஆலோசனைக் குழு</p>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-12" data-aos="fade-up">
-            <p class="tamil-text">
-              ஆலோசனைக் குழு உறுப்பினர்களின் பங்களிப்பு:
-            </p>
-            <ul>
-              <li><i class="bi bi-check2-circle"></i> வகுப்புகள் மற்றும் நிகழ்வுகளுக்கான பள்ளி வசதி முன்பதிவுகளை ஒருங்கிணைத்தல்</li>
-              <li><i class="bi bi-check2-circle"></i> பள்ளி செயல்பாடுகள் தொடர்பான தகவல்தொடர்புகளைப் பகிர்ந்து கொள்ளுதல்</li>
-              <li><i class="bi bi-check2-circle"></i> மாணவர் சேர்க்கையை முன்னெடுத்தல்</li>
-              <li><i class="bi bi-check2-circle"></i> தேவைப்படும்போது மாற்று ஆசிரியர்களை ஏற்பாடு செய்யவும்</li>
-              <li><i class="bi bi-check2-circle"></i> பள்ளியின் செயல்பாடுகளை சீராக உறுதி செய்ய ஆசிரியர்களுடன் இணைந்து பணியாற்றுதல்</li>
-              <li><i class="bi bi-check2-circle"></i> பாடத்திட்டங்கள் மற்றும் தேர்வுகளில் அமெரிக்க தமிழ் அகாடமியுடன் இணைந்து செயலாற்றுதல்</li>
-            </ul>
-            <p class="mt-4">
-              <strong>Role of BTS Advisory Committee Members:</strong>
-            </p>
-            <ul>
-              <li><i class="bi bi-check2-circle"></i> Coordinate booking of school facility for classes and events</li>
-              <li><i class="bi bi-check2-circle"></i> Share communications regarding school operations</li>
-              <li><i class="bi bi-check2-circle"></i> Support student registration and enrollment</li>
-              <li><i class="bi bi-check2-circle"></i> Arrange alternate teachers when needed</li>
-              <li><i class="bi bi-check2-circle"></i> Work closely with teachers to ensure smooth school operations</li>
-              <li><i class="bi bi-check2-circle"></i> Collaborate with American Tamil Academy on syllabus and exams</li>
-            </ul>
-            <div class="row mt-4">
-              <div class="col-md-6">
-                <h5>Advisory Committee Members:</h5>
-                <ul>
-                  <li>Mr. Udhay Durai</li>
-                  <li>Mrs. Manjula Rajendran</li>
-                  <li>Mr. Aravind Ganapathi</li>
-                  <li>Mrs. Deepa Maheshbabu</li>
-                  <li>Mr. Bosco Silvester</li>
-                  <li>Mrs. Varsha Ramesh</li>
-                </ul>
-              </div>
+            <div class="teaching-approach">
+              <h3>Teaching Approach</h3>
+              <p>Our teachers employ various teaching methods to make learning engaging and effective:</p>
+              <ul>
+                <li><i class="bi bi-check2-circle"></i> Classroom Activities:
+                  <ul>
+                    <li>Weekly vocabulary and conversation practice</li>
+                    <li>Interactive storytelling and songs</li>
+                    <li>Cultural activities and performances</li>
+                    <li>Regular assessments and feedback</li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -732,36 +288,19 @@
             <h2>Contact Us</h2>
             <p>Get in Touch</p>
           </div>
-          
-          <div class="row gy-4">
-            <div class="col-lg-6">
-              <p><strong>Email:</strong> <a href="mailto:bts.tamilschool@gmail.com">bts.tamilschool@gmail.com</a></p>
-              
-              <h4>School Location</h4>
-              <p>
-                <strong>Shoal Creek Elementary School</strong><br>
-                11775 Shoal Creek Drive<br>
-                San Diego, CA 92128
-              </p>
-              
-              <p>
-                Our classes are operated directly from Shoal Creek Elementary School, where we work hard to reserve our facility in advance and keep it up to date. If the school facility is unavailable, we promptly secure an alternative venue or conduct virtual classes to ensure that learning never stops.
-              </p>
-              
-              <p>
-                <strong>School Timing:</strong> 6:45 PM to 8:30 PM<br>
-                <strong>Assembly Time:</strong> 6:45 PM sharp
-              </p>
-              
-              <p>
-                Join our <a href="https://chat.whatsapp.com/LuDql1mRm7LCRiLoMIORZu" target="_blank">Tamil School Community on WhatsApp</a> for the latest updates.
-              </p>
-            </div>
-            
-            <div class="col-lg-6">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.3875568380386!2d-117.08457162469128!3d32.96717547424441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dbf9f66a0f6123%3A0x990f16db9636532b!2sShoal%20Creek%20Elementary%20School!5e0!3m2!1sen!2sus!4v1740008891964!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>
+          <p> <strong>Email:</strong> <a href="mailto:bts.tamilschool@gmail.com">bts.tamilschool@gmail.com</a></p>
+  
+          <p>
+            Our classes are operated directly from Shoal Creek Elementary School, where we work hard to reserve our facility in advance and keep it up to date. If the school facility is unavailable, we promptly secure an alternative venue or conduct virtual classes to ensure that learning never stops.<br><br>
+            Join our <a href="https://chat.whatsapp.com/LuDql1mRm7LCRiLoMIORZu" target="_blank">Tamil School Community on WhatsApp</a> for the latest updates.
+          </p>
+          <p><strong>School Timing:</strong> 6:45 PM to 8:30 PM</p>
+  
+        <!-- Optional: Embed Google Maps -->
+  
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.3875568380386!2d-117.08457162469128!3d32.96717547424441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dbf9f66a0f6123%3A0x990f16db9636532b!2sShoal%20Creek%20Elementary%20School!5e0!3m2!1sen!2sus!4v1740008891964!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  
+  
         </div>
       </section>
   </main>
@@ -785,23 +324,21 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files - All deferred for better performance -->
-  <script defer src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script defer src="assets/vendor/aos/aos.js"></script>
-  <script defer src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script defer src="assets/js/main.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 
   <script>
-    // Initialize AOS after DOM and library are loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof AOS !== 'undefined') {
-        AOS.init({
-          duration: 1000,
-          easing: 'ease-in-out',
-          once: true,
-          mirror: false
-        });
-      }
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
     });
   </script>
 </body>
