@@ -5,10 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-  <!-- Add cache control meta tags -->
+  <!-- Cache control meta tags - Removed for better performance (browser caching enabled) -->
+  <!-- For development, you can uncomment these lines:
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
+  -->
   
   <title>Bharathiyar Tamil School - San Diego Tamil Sangam</title>
   <meta name="description" content="Bharathiyar Tamil School (BTS) is dedicated to teaching Tamil language and culture to children in the Greater San Diego area through structured programs and engaging activities.">
@@ -30,10 +32,11 @@
   <link rel="preload" href="assets/vendor/bootstrap/css/bootstrap.min.css" as="style">
   <link rel="preload" href="assets/img/bts-logo.png" as="image">
 
-  <!-- Fonts with display swap -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts with display swap - Optimized loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
   <!-- Critical CSS first -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,9 +44,11 @@
   
   <!-- Non-critical CSS with media="print" onload hack -->
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"></noscript>
   <link href="assets/vendor/aos/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="assets/vendor/aos/aos.css" rel="stylesheet"></noscript>
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"></noscript>
 
   <link rel="canonical" href="https://www.sdts.org/bts/" />
 
@@ -84,7 +89,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="#hero" class="logo d-flex align-items-center" onclick="event.preventDefault(); document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });">
-        <img src="assets/img/bts-logo.png" alt="BTS Logo">
+        <img src="assets/img/bts-logo.png" alt="BTS Logo" fetchpriority="high">
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -236,7 +241,7 @@
         </p>
     <div class="row">
         <div class="col-lg-6 col-md-8">
-        <img src="assets/img/SY24-25.png" alt="school year 2025-26" class="img-fluid">
+        <img src="assets/img/SY24-25.png" alt="school year 2025-26" class="img-fluid" loading="lazy">
         </div>
     </div>
     </div>
@@ -317,7 +322,7 @@
             </div>
           </div>
           <div class="col-lg-6 text-center" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/bts-teachers.jpg" alt="BTS Teachers" class="img-fluid rounded shadow-lg">
+            <img src="assets/img/bts-teachers.jpg" alt="BTS Teachers" class="img-fluid rounded shadow-lg" loading="lazy">
           </div>
         </div>
 
@@ -780,21 +785,23 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <!-- Vendor JS Files - All deferred for better performance -->
+  <script defer src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/vendor/aos/aos.js"></script>
+  <script defer src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script defer src="assets/js/main.js"></script>
 
   <script>
-    // Initialize AOS
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
+    // Initialize AOS after DOM and library are loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 1000,
+          easing: 'ease-in-out',
+          once: true,
+          mirror: false
+        });
+      }
     });
   </script>
 </body>
