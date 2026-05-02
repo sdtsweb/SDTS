@@ -1,0 +1,116 @@
+name: SSL renew
+
+# Runs every Monday at 12:00 UTC, plus manual trigger.
+# - Checks the live cert expiry
+# - If <=30 days remaining, runs auto_renew.py (DNS-01 with GoDaddy)
+# - On success, uploads the new cert as an artifact and opens an issue
+#   telling the team to install it in Plesk.
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Force renewal even if cert isn't near expiry"
+        required: false
+        default: "false"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  renew:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install -r scripts/ssl/requirements.txt
+
+      - name: Check current cert expiry
+        id: check
+        run: python scripts/ssl/check_expiry.py
+
+      - name: Decide whether to renew
+        id: decide
+        run: |
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            echo "should_renew=true" >> "$GITHUB_OUTPUT"
+            echo "Manual force"
+          elif [ "${{ steps.check.outputs.needs_renewal }}" = "true" ]; then
+            echo "should_renew=true" >> "$GITHUB_OUTPUT"
+            echo "Auto: cert near expiry"
+          else
+            echo "should_renew=false" >> "$GITHUB_OUTPUT"
+            echo "Auto: cert valid for >${{ steps.check.outputs.min_days }} days, no action"
+          fi
+
+      - name: Run renewal
+        if: steps.decide.outputs.should_renew == 'true'
+        env:
+          GODADDY_API_KEY: ${{ secrets.GODADDY_API_KEY }}
+          GODADDY_API_SECRET: ${{ secrets.GODADDY_API_SECRET }}
+          LE_ACCOUNT_KEY_PEM: ${{ secrets.LE_ACCOUNT_KEY_PEM }}
+          LE_EMAIL: ${{ secrets.LE_EMAIL }}
+          SSL_OUT_DIR: output
+        run: python scripts/ssl/auto_renew.py
+
+      - name: Upload cert as artifact (private to repo)
+        if: steps.decide.outputs.should_renew == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssl-cert-${{ github.run_number }}
+          path: output/
+          retention-days: 90
+
+      - name: Open install-cert issue
+        if: steps.decide.outputs.should_renew == 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              "## New SSL certificate ready to install",
+              "",
+              `Workflow run: ${runUrl}`,
+              "",
+              "**Download the artifact** named `ssl-cert-${{ github.run_number }}` from that run page.",
+              "",
+              "It contains four files: `privkey.pem`, `cert.pem`, `chain.pem`, `fullchain.pem`.",
+              "",
+              "### Install in Plesk",
+              "",
+              "Do this once for **sdts.org** and once for **bts.sdts.org** — the same cert covers both.",
+              "",
+              "1. Plesk → Websites & Domains → click the domain → **SSL/TLS Certificates**",
+              "2. Click **Add SSL/TLS Certificate**",
+              "3. Name it `letsencrypt_<today's date>`",
+              "4. Paste `privkey.pem` into **Private key**",
+              "5. Paste `cert.pem` into **Certificate**",
+              "6. Paste `chain.pem` into **CA certificate**",
+              "7. Click **Upload Certificate**",
+              "8. Then in **Hosting Settings** → **SSL/TLS Support** → select the new cert → save",
+              "",
+              "Verify:",
+              "- https://sdts.org",
+              "- https://www.sdts.org",
+              "- https://bts.sdts.org",
+              "- https://www.bts.sdts.org",
+              "",
+              "Close this issue once installation is verified.",
+              "",
+              "Full runbook: [docs/SSL_RENEWAL.md](../blob/main/docs/SSL_RENEWAL.md)",
+            ].join("\n");
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Install new SSL cert (run #${context.runId})`,
+              body,
+              labels: ["ssl", "ops"],
+            });

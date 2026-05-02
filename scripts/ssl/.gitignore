@@ -1,0 +1,14 @@
+# Generated artifacts — never commit these to a public repo
+account.key
+privkey.pem
+cert.pem
+chain.pem
+fullchain.pem
+state.json
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

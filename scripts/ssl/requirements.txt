@@ -1,0 +1,4 @@
+acme>=2.0.0
+cryptography>=41.0.0
+josepy>=1.13.0
+requests>=2.31.0
