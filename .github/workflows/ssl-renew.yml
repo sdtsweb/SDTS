@@ -19,13 +19,16 @@ permissions:
   contents: read
   issues: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   renew:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -58,6 +61,7 @@ jobs:
           LE_ACCOUNT_KEY_PEM: ${{ secrets.LE_ACCOUNT_KEY_PEM }}
           LE_EMAIL: ${{ secrets.LE_EMAIL }}
           SSL_OUT_DIR: output
+          FORCE_RENEW: "true"
         run: python scripts/ssl/auto_renew.py
 
       - name: Upload cert as artifact (private to repo)

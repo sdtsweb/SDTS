@@ -144,15 +144,20 @@ def main():
 
     email = os.environ.get("LE_EMAIL", DEFAULT_EMAIL)
 
-    log("Checking current cert expiry on live domains")
-    days = days_until_expiry()
-    if days is not None and days >= RENEW_THRESHOLD_DAYS:
-        log(f"All domains valid for >={RENEW_THRESHOLD_DAYS} days. No renewal needed.")
-        sys.exit(2)
-    if days is None:
-        log("Could not determine current expiry — proceeding with renewal anyway")
+    force_renew = os.environ.get("FORCE_RENEW", "").lower() == "true"
+
+    if force_renew:
+        log("FORCE_RENEW=true — skipping expiry check, proceeding with renewal")
     else:
-        log(f"At least one domain expires within {RENEW_THRESHOLD_DAYS} days — renewing")
+        log("Checking current cert expiry on live domains")
+        days = days_until_expiry()
+        if days is not None and days >= RENEW_THRESHOLD_DAYS:
+            log(f"All domains valid for >={RENEW_THRESHOLD_DAYS} days. No renewal needed.")
+            sys.exit(2)
+        if days is None:
+            log("Could not determine current expiry — proceeding with renewal anyway")
+        else:
+            log(f"At least one domain expires within {RENEW_THRESHOLD_DAYS} days — renewing")
 
     # ---- account key ----
     acct_key_pem = os.environ.get("LE_ACCOUNT_KEY_PEM")
@@ -167,9 +172,18 @@ def main():
             format=serialization.PrivateFormat.PKCS8,
             encryption_algorithm=serialization.NoEncryption(),
         ).decode()
-        print("\n>>> SAVE THIS AS GitHub SECRET 'LE_ACCOUNT_KEY_PEM' <<<\n")
+        banner = "#" * 72
+        print(f"\n{banner}")
+        print("##  SAVE THIS AS GitHub SECRET 'LE_ACCOUNT_KEY_PEM'              ##")
+        print("##  Copy the PEM block (BEGIN ... END lines inclusive) into       ##")
+        print("##  Settings > Secrets > Actions > New secret: LE_ACCOUNT_KEY_PEM ##")
+        print(f"{banner}\n")
         print(new_pem)
-        print(">>> END KEY <<<\n")
+        print(f"\n{banner}")
+        print("##  END LE_ACCOUNT_KEY_PEM — also saved to artifact zip below     ##")
+        print(f"{banner}\n")
+        # Also write to artifact so it can be retrieved from the run's zip
+        (OUT_DIR / "LE_ACCOUNT_KEY_PEM.secret.txt").write_text(new_pem)
 
     # ---- ACME client ----
     jwk = jose.JWKRSA(key=jose.ComparableRSAKey(acct_key))
