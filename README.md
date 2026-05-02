@@ -40,6 +40,41 @@ The Bharathiyar Tamil School (BTS) website is now fully managed in this reposito
 
 ---
 
+## SSL Certificate Renewal
+
+HTTPS certificates for `sdts.org`, `www.sdts.org`, `bts.sdts.org`, and `www.bts.sdts.org` are issued by Let's Encrypt (90-day lifetime) and managed semi-automatically via GitHub Actions.
+
+### How it works
+
+| Step | Who does it | When |
+|------|------------|------|
+| Check expiry on all 4 domains | `ssl-expiry-check` workflow (daily) | Every day at 14:00 UTC |
+| Issue new cert via Let's Encrypt DNS-01 | `ssl-renew` workflow | Every Monday at 12:00 UTC if cert expires within 30 days |
+| **Install cert in Plesk** ← **manual step** | A volunteer | After the workflow opens a GitHub issue |
+
+### ⚠️ Mandatory manual step — Install cert in Plesk
+
+When the `ssl-renew` workflow runs successfully it opens a GitHub issue titled **"Install new SSL cert (run #...)"** labeled `ssl` + `ops`. **Someone must act on this issue within a few days or the site will show a cert warning.**
+
+Steps (takes ~5 minutes):
+
+1. Download the artifact linked in the issue (`ssl-cert-N.zip`)
+2. Log in to Plesk via GoDaddy → Hosting → Manage
+3. For **sdts.org** and **bts.sdts.org** (do both):
+   - Websites & Domains → domain → **SSL/TLS Certificates** → **Add SSL/TLS Certificate**
+   - Name it `letsencrypt_YYYY-MM-DD`
+   - Paste `privkey.pem` → Private key, `cert.pem` → Certificate, `chain.pem` → CA certificate
+   - Click **Upload Certificate**
+   - Hosting Settings → select the new cert → OK
+4. Verify all 4 URLs load with a valid padlock
+5. Close the GitHub issue
+
+> Note: GoDaddy shared hosting (Plesk Obsidian) does not expose SSH or a reliable API, so Plesk installation cannot be automated. The manual step is intentional — it also ensures a human verifies the site after each renewal.
+
+Full runbook: [docs/SSL_RENEWAL.md](docs/SSL_RENEWAL.md)
+
+---
+
 Thanks for downloading this template!
 
 Template Name: Selecao  
