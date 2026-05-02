@@ -34,7 +34,7 @@ jobs:
 
       - name: Open warning issue if expiring soon
         if: steps.check.outputs.needs_renewal == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |

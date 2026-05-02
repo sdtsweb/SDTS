@@ -66,7 +66,7 @@ jobs:
 
       - name: Upload cert as artifact (private to repo)
         if: steps.decide.outputs.should_renew == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ssl-cert-${{ github.run_number }}
           path: output/
@@ -74,7 +74,7 @@ jobs:
 
       - name: Open install-cert issue
         if: steps.decide.outputs.should_renew == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
