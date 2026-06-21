@@ -56,17 +56,28 @@ git commit -m "Short description of what changed and why"
 git push origin <branch-name>
 ```
 
-### 7. Report back to the user
+### 7. Create a pull request
+```powershell
+gh pr create --title "Short title of change" --body "What was changed and why" --base main
+```
+
+### 8. Merge the pull request
+Wait for user to confirm they are happy with the PR, then merge:
+```powershell
+gh pr merge --merge --delete-branch
+```
+
+### 9. Report back to the user
 Always end by telling the user:
-- Which branch was pushed
-- The GitHub compare/PR URL: `https://github.com/sdtsweb/SDTS/compare/<branch-name>`
-- What to do next: review the diff on GitHub, then merge to main
+- The PR URL (printed by `gh pr create`)
+- Confirmation that it has been merged to main
 
 ## Rules
 - NEVER commit directly to `main`
 - Each change request = one branch = one PR
 - Commit messages must describe what changed (not just "update")
 - This is a static site — no build step needed, changes are deploy-on-merge
+- Always use `gh pr create` + `gh pr merge` — never `git merge` directly to main
 
 ## Git Identity (configured globally)
 - Email: wkeynoping@gmail.com
