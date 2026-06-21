@@ -79,5 +79,6 @@ Always end by telling the user:
 - This is a static site — no build step needed, changes are deploy-on-merge
 - Always use `gh pr create` + `gh pr merge` — never `git merge` directly to main
 
-## Git Identity (configured globally)
-- Email: wkeynoping@gmail.com
+## Git Identity (repo-local, maps to sdtsweb on GitHub)
+- Name: sdtsweb
+- Email: sdts.mails@gmail.com
