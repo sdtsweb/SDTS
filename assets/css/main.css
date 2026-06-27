@@ -885,6 +885,24 @@ section,
   transform: translate(5px, 0);
 }
 
+.tamil-content {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  line-height: 1.9;
+  padding-left: 2rem;
+}
+
+.tamil-content h3 {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.tamil-content p,
+.tamil-content li {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
 /*--------------------------------------------------------------
 # Features Section
 --------------------------------------------------------------*/
@@ -1598,6 +1616,29 @@ section,
 .team .team-member:hover .social {
   opacity: 1;
   bottom: 15px;
+}
+
+.team .team-member .member-img img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.team .team-member .member-info {
+  text-align: center;
+}
+
+.team-group-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
 }
 
 /*--------------------------------------------------------------
