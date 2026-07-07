@@ -1548,6 +1548,32 @@ section,
 }
 
 /*--------------------------------------------------------------
+# EC Congratulations Banner
+--------------------------------------------------------------*/
+.ec-congrats-banner {
+  background-color: #eaf6fc;
+  border-top: 1px solid #cfe9f5;
+  border-bottom: 1px solid #cfe9f5;
+  padding: 14px 0;
+  text-align: center;
+}
+
+.ec-congrats-banner p {
+  margin: 0;
+  color: #15658a;
+  font-family: var(--heading-font);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 575px) {
+  .ec-congrats-banner p {
+    font-size: 14px;
+  }
+}
+
+/*--------------------------------------------------------------
 # Team Section
 --------------------------------------------------------------*/
 .team .team-member {
