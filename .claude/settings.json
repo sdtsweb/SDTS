@@ -2,7 +2,16 @@
   "permissions": {
     "allow": [
       "Bash(python3 -m http.server 8080)",
-      "Bash(python3 -m http.server 8090)"
+      "Bash(python3 -m http.server 8090)",
+      "Bash(git status *)",
+      "Bash(curl -s https://api.github.com/repos/sdtsweb/SDTS/commits?per_page=3)",
+      "Bash(curl -s \"https://api.github.com/repos/sdtsweb/SDTS/commits?per_page=5\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(c['sha'][:7], c['commit']['message'].splitlines\\(\\)[0]\\) for c in data]\")",
+      "Bash(git config *)",
+      "Bash(git remote *)",
+      "Bash(git fetch *)",
+      "Bash(git merge *)",
+      "Bash(git push *)"
     ]
   }
 }
