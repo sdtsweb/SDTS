@@ -1626,6 +1626,22 @@ section,
   display: block;
 }
 
+/* Custom framing for source photos whose face/shoulder proportions differ
+   from the default top-aligned crop. --crop-w/--crop-l/--crop-t are set
+   per photo to align head size and headroom with the rest of the group. */
+.team .team-member .member-img.custom-crop {
+  aspect-ratio: 1 / 1;
+}
+
+.team .team-member .member-img.custom-crop img {
+  position: absolute;
+  max-width: none;
+  aspect-ratio: auto;
+  width: var(--crop-w, 100%);
+  left: var(--crop-l, 0%);
+  top: var(--crop-t, 0%);
+}
+
 .team .team-member .member-info {
   text-align: center;
 }
